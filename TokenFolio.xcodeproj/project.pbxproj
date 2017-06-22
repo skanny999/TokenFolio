@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E41DD8FD00D32230FA4A3A2 /* Pods_TokenFolio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */; };
+		8B412BB81EFC754300BB3850 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8B412BB71EFC754300BB3850 /* Podfile */; };
 		8B8ABF9C1EFC08CF00DD0AC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */; };
 		8B8ABF9E1EFC08CF00DD0AC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */; };
 		8B8ABFA11EFC08CF00DD0AC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9F1EFC08CF00DD0AC5 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokenFolio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B412BB71EFC754300BB3850 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		8B8ABF981EFC08CF00DD0AC5 /* TokenFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		8B8ABFBA1EFC08CF00DD0AC5 /* TokenFolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokenFolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8ABFBE1EFC08CF00DD0AC5 /* TokenFolioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFolioUITests.swift; sourceTree = "<group>"; };
 		8B8ABFC01EFC08CF00DD0AC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A25EA332053B079C8D92F42E /* Pods-TokenFolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokenFolio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio.debug.xcconfig"; sourceTree = "<group>"; };
+		E0CAD6F7C79137C7877FB30F /* Pods-TokenFolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokenFolio.release.xcconfig"; path = "Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E41DD8FD00D32230FA4A3A2 /* Pods_TokenFolio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +83,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24D27ED4CE4C5CA869700E60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA332053B079C8D92F42E /* Pods-TokenFolio.debug.xcconfig */,
+				E0CAD6F7C79137C7877FB30F /* Pods-TokenFolio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B412BB91EFC78DF00BB3850 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		8B412BBA1EFC78EA00BB3850 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B8ABFA21EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8B412BBB1EFC78F600BB3850 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8B8ABFA51EFC08CF00DD0AC5 /* Assets.xcassets */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		8B8ABF8F1EFC08CE00DD0AC5 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +123,8 @@
 				8B8ABFB21EFC08CF00DD0AC5 /* TokenFolioTests */,
 				8B8ABFBD1EFC08CF00DD0AC5 /* TokenFolioUITests */,
 				8B8ABF991EFC08CF00DD0AC5 /* Products */,
+				24D27ED4CE4C5CA869700E60 /* Pods */,
+				E12368F655216F78E61D9446 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,12 +142,13 @@
 			isa = PBXGroup;
 			children = (
 				8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */,
-				8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */,
+				8B412BB91EFC78DF00BB3850 /* View Controller */,
+				8B412BBA1EFC78EA00BB3850 /* Model */,
+				8B412BBB1EFC78F600BB3850 /* Images */,
 				8B8ABF9F1EFC08CF00DD0AC5 /* Main.storyboard */,
-				8B8ABFA51EFC08CF00DD0AC5 /* Assets.xcassets */,
 				8B8ABFA71EFC08CF00DD0AC5 /* LaunchScreen.storyboard */,
 				8B8ABFAA1EFC08CF00DD0AC5 /* Info.plist */,
-				8B8ABFA21EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld */,
+				8B412BB71EFC754300BB3850 /* Podfile */,
 			);
 			path = TokenFolio;
 			sourceTree = "<group>";
@@ -128,6 +171,14 @@
 			path = TokenFolioUITests;
 			sourceTree = "<group>";
 		};
+		E12368F655216F78E61D9446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B8ABFC31EFC08CF00DD0AC5 /* Build configuration list for PBXNativeTarget "TokenFolio" */;
 			buildPhases = (
+				8B812C0F3BF2659DFC1C2C4F /* [CP] Check Pods Manifest.lock */,
 				8B8ABF941EFC08CF00DD0AC5 /* Sources */,
 				8B8ABF951EFC08CF00DD0AC5 /* Frameworks */,
 				8B8ABF961EFC08CF00DD0AC5 /* Resources */,
+				B9A61C35253DDC42C62373CE /* [CP] Embed Pods Frameworks */,
+				DABC18EF31C7763267C88345 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +294,7 @@
 			files = (
 				8B8ABFA91EFC08CF00DD0AC5 /* LaunchScreen.storyboard in Resources */,
 				8B8ABFA61EFC08CF00DD0AC5 /* Assets.xcassets in Resources */,
+				8B412BB81EFC754300BB3850 /* Podfile in Resources */,
 				8B8ABFA11EFC08CF00DD0AC5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +314,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B812C0F3BF2659DFC1C2C4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9A61C35253DDC42C62373CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DABC18EF31C7763267C88345 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B8ABF941EFC08CF00DD0AC5 /* Sources */ = {
@@ -417,6 +520,7 @@
 		};
 		8B8ABFC41EFC08CF00DD0AC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A25EA332053B079C8D92F42E /* Pods-TokenFolio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
@@ -430,6 +534,7 @@
 		};
 		8B8ABFC51EFC08CF00DD0AC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0CAD6F7C79137C7877FB30F /* Pods-TokenFolio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2GM46VBD99;
@@ -518,6 +623,7 @@
 				8B8ABFC51EFC08CF00DD0AC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B8ABFC61EFC08CF00DD0AC5 /* Build configuration list for PBXNativeTarget "TokenFolioTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +632,7 @@
 				8B8ABFC81EFC08CF00DD0AC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B8ABFC91EFC08CF00DD0AC5 /* Build configuration list for PBXNativeTarget "TokenFolioUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +641,7 @@
 				8B8ABFCB1EFC08CF00DD0AC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
