@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		6E41DD8FD00D32230FA4A3A2 /* Pods_TokenFolio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */; };
 		8B412BB81EFC754300BB3850 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8B412BB71EFC754300BB3850 /* Podfile */; };
+		8B412BBD1EFC7B4800BB3850 /* TPMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B412BBC1EFC7B4800BB3850 /* TPMainTableViewController.swift */; };
 		8B8ABF9C1EFC08CF00DD0AC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */; };
-		8B8ABF9E1EFC08CF00DD0AC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */; };
 		8B8ABFA11EFC08CF00DD0AC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9F1EFC08CF00DD0AC5 /* Main.storyboard */; };
 		8B8ABFA41EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABFA21EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld */; };
 		8B8ABFA61EFC08CF00DD0AC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8ABFA51EFC08CF00DD0AC5 /* Assets.xcassets */; };
@@ -39,9 +39,9 @@
 /* Begin PBXFileReference section */
 		6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokenFolio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B412BB71EFC754300BB3850 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		8B412BBC1EFC7B4800BB3850 /* TPMainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainTableViewController.swift; sourceTree = "<group>"; };
 		8B8ABF981EFC08CF00DD0AC5 /* TokenFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B8ABFA01EFC08CF00DD0AC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B8ABFA31EFC08CF00DD0AC5 /* TokenFolio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TokenFolio.xcdatamodel; sourceTree = "<group>"; };
 		8B8ABFA51EFC08CF00DD0AC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		8B412BB91EFC78DF00BB3850 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8B8ABF9D1EFC08CF00DD0AC5 /* ViewController.swift */,
+				8B412BBC1EFC7B4800BB3850 /* TPMainTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -368,8 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B8ABF9E1EFC08CF00DD0AC5 /* ViewController.swift in Sources */,
 				8B8ABFA41EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld in Sources */,
+				8B412BBD1EFC7B4800BB3850 /* TPMainTableViewController.swift in Sources */,
 				8B8ABF9C1EFC08CF00DD0AC5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
