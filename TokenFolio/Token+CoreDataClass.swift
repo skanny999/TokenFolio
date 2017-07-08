@@ -11,5 +11,7 @@ import CoreData
 
 
 public class Token: NSManagedObject {
+    
+    
 
 }
