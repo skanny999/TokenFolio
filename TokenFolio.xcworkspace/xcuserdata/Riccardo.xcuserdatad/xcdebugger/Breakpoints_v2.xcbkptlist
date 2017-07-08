@@ -10,13 +10,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFMainTableViewController.swift"
-            timestampString = "521226368.63161"
+            timestampString = "521230971.414936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "controller(controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:)"
-            landmarkType = "7">
+            startingLineNumber = "154"
+            endingLineNumber = "154">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TokenFolio/TFMainTableViewController.swift"
+            timestampString = "521230971.414936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TokenFolio/TFMainTableViewController.swift"
+            timestampString = "521230971.414936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

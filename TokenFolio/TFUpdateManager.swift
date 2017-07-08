@@ -58,29 +58,9 @@ class TFUpdateManager {
                 createToken(dict: dict as! [String : Any])
                 
             }
-            
-            printTokens()
         }
     }
     
-    func printTokens() {
-    
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Token")
-        
-        do {
-            let tokens = try context.fetch(fetchRequest) as! [Token]
-            
-            print(tokens)
-            
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
-        
-
-    
-    }
-    
-
     
     
     func createToken (dict : [String:Any]) {
@@ -114,7 +94,6 @@ class TFUpdateManager {
             token.marketCapEur = nil
         }
 
-        
         if let marketCapGbp = dict[key.marketCapGbp] as? String  {
             
             token.marketCapGbp = marketCapGbp
@@ -157,7 +136,6 @@ class TFUpdateManager {
             
             token.priceEur = nil
         }
-        
         
         if let priceGbp = dict[key.priceGbp] as? String  {
             

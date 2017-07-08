@@ -9,11 +9,7 @@
 import UIKit
 import CoreData
 
-class TFMainTableViewController: UITableViewController {
-    
-    let randomArray = ["me", "you", "them"]
-    var resultsArray = [Any]()
-    var currencies = [String]()
+class TFMainTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var fetchedResultsController: NSFetchedResultsController<Token>!
     
@@ -41,6 +37,8 @@ class TFMainTableViewController: UITableViewController {
         
         do {
             try fetchedResultsController.performFetch()
+            
+//            print(fetchedResultsController.fetchedObjects)
             
         } catch {
             
@@ -92,17 +90,17 @@ class TFMainTableViewController: UITableViewController {
         return cell
     }
     
-
-}
-
-extension TFMainTableViewController: NSFetchedResultsControllerDelegate {
     
-    private func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController<Token>) {
         
         tableView.beginUpdates()
     }
     
-    private func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
@@ -117,7 +115,56 @@ extension TFMainTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
-    private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+//   func controller(_ controller: NSFetchedResultsController<Token>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        case .update:
+//            break
+//        // update cell at indexPath
+//        case .move:
+//            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//            tableView.insertRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        }
+//    }
+    
+//   func controllerDidChangeContent(controller: NSFetchedResultsController<Token>) {
+//        tableView.endUpdates()
+//    }
+    
+
 }
+
+//extension TFMainTableViewController: NSFetchedResultsControllerDelegate {
+//    
+//    private func controllerWillChangeContent(controller: NSFetchedResultsController<Token>) {
+//        
+//        tableView.beginUpdates()
+//    }
+// 
+
+//    private func controller(controller: NSFetchedResultsController<Token>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        case .update:
+//            break
+//        // update cell at indexPath
+//        case .move:
+//            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//            tableView.insertRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+//        }
+//    }
+//    
+//    private func controllerDidChangeContent(controller: NSFetchedResultsController<Token>) {
+//        tableView.endUpdates()
+//    }
+//}
