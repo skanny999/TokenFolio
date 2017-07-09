@@ -11,38 +11,17 @@ import CoreData
 
 class TFUpdateManager {
     
-    let context : NSManagedObjectContext
+    var managedObjectContext : NSManagedObjectContext
+    var backgroundManagedObjectContext : NSManagedObjectContext
     
-    struct keys {
-        
-        let availableSupply = "available_supply"
-        let id =  "id"
-        let lastUpdated = "last_updated"
-        let marketCapEur = "market_cap_eur"
-        let marketCapGbp = "market_cap_gbp"
-        let marketCapUsd = "market_cap_usd"
-        let name = "name"
-        let percentChange1h = "percent_change_1h"
-        let percentChange24h = "percent_change_24h"
-        let percentChange7d = "percent_change_7d"
-        let priceBtc = "price_btc"
-        let priceEur = "price_eur"
-        let priceGbp = "price_gbp"
-        let priceUsd = "price_usd"
-        let rank = "rank"
-        let symbol = "symbol"
-        let totalSupply = "total_supply"
-        let volume24hEur = "24h_volume_eur"
-        let volume24hGbp = "24h_volume_gbp"
-        let volume24hUsd = "24h_volume_usd"
-        
-    }
-
+    var jsonIDs = [String]()
     
-    init () {
+    init() {
         
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-         print(context)
+        managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundManagedObjectContext.parent = managedObjectContext
+        
     }
     
     
@@ -53,141 +32,111 @@ class TFUpdateManager {
         
         if let jsonArray =  json as? [Any] {
             
-            for dict in jsonArray {
+            backgroundManagedObjectContext.perform {
                 
-                createToken(dict: dict as! [String : Any])
+                for dict in jsonArray {
+                    
+                    self.updateTokensWithDictionaryInManagedObjectContext(dict as! [String : Any], self.backgroundManagedObjectContext)
+                }
                 
+                self.deleteMissingTokensInManagedObjectContext(in: self.backgroundManagedObjectContext)
+
+                self.save()
             }
         }
     }
     
     
     
-    func createToken (dict : [String:Any]) {
+    func updateTokensWithDictionaryInManagedObjectContext (_ dict : [String : Any], _ mod : NSManagedObjectContext) {
         
-        let key = keys()
+        let id = dict["id"]
+        var results = [Token]()
+        jsonIDs.append(id as! String)
         
-        let token = Token(context: context)
-        
-        if let availableSupply = dict[key.availableSupply] as? String {
-            
-            token.availableSupply = availableSupply
-        }
-        
-        if let id = dict[key.id] as? String  {
-            
-            token.id = id
-        }
-        
-        if let lastUpdated = dict[key.lastUpdated] as? String  {
-            
-            token.lastUpdated = lastUpdated
-            
-        }
-        
-        if let marketCapEur = dict[key.marketCapEur] as? String  {
-            
-            token.marketCapEur = marketCapEur
-            
-        } else {
-            
-            token.marketCapEur = nil
-        }
+        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as! String)
 
-        if let marketCapGbp = dict[key.marketCapGbp] as? String  {
+        results = try! fetchRequest.execute()
+        
+        if results.count > 0 {
             
-            token.marketCapGbp = marketCapGbp
+            if let token = results.first {
+                
+                token.assignValuesToTokenFromDictionary(dict)
+            }
             
         } else {
             
-            token.marketCapGbp = nil
-        }
-        
-        if let marketCapUsd = dict[key.marketCapUsd] as? String  {
-            
-            token.marketCapUsd = marketCapUsd
-        }
-        
-        if let name = dict[key.name] as? String  {
-            
-            token.name = name
-        }
-        
-        if let percentChange1h = dict[key.percentChange1h] as? String  {
-            
-            token.percentChange1h = percentChange1h
-        }
-        
-        if let percentChange24h = dict[key.percentChange24h] as? String  {
-            
-            token.percentChange24h = percentChange24h
-        }
-        
-        if let priceBtc = dict[key.priceBtc]  as? String {
-            
-            token.priceBtc = priceBtc
-        }
-        
-        if let priceEur = dict[key.priceEur] as? String  {
-            
-            token.priceEur = priceEur
-            
-        } else {
-            
-            token.priceEur = nil
-        }
-        
-        if let priceGbp = dict[key.priceGbp] as? String  {
-            
-            token.priceGbp = priceGbp
-            
-        } else {
-            
-            token.priceGbp = nil
-        }
-        
-        if let priceUsd = dict[key.priceUsd] as? String {
-            
-            token.priceUsd = priceUsd
-        }
-        
-        if let rank = dict[key.rank] as? String  {
-            
-            token.rank = rank
-        }
-        
-        if let symbol = dict[key.symbol] as? String  {
-            
-            token.symbol = symbol
-        }
-        
-        if let totalSupply = dict[key.totalSupply] as? String  {
-            
-            token.totalSupply = totalSupply
-        }
-        
-        if let volume24hEur = dict[key.volume24hEur] as? String  {
-            
-            token.volume24hEur = volume24hEur
-            
-        } else {
-            
-            token.volume24hEur = nil
-        }
-        
-        if let volume24hGbp = dict[key.volume24hGbp] as? String  {
-            
-            token.volume24hGbp = volume24hGbp
-            
-        } else {
-            
-            token.volume24hGbp = nil
-        }
-        
-        if let volume24hUsd = dict[key.volume24hUsd] as? String  {
-            
-            token.volume24hUsd = volume24hUsd
+            Token.newTokenFromDictionaryInManagedObjectContext(dict, self.backgroundManagedObjectContext)
         }
     }
-  
+    
+    
+    
+    func deleteMissingTokensInManagedObjectContext(in mod : NSManagedObjectContext) {
+        
+        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+        
+        mod.perform {
+            
+            let tokens = try! fetchRequest.execute()
+            
+            for token in tokens {
+                
+                if !self.jsonIDs.contains(token.id!) {
+                    
+                    token.deleteInManagedObjectContext(mod)
+                }
+            }
+            
+            self.save()
+        }
+    }
+    
+    
+    func save() {
+        
+        do {
+            
+            try self.backgroundManagedObjectContext.save()
+            
+            self.managedObjectContext.perform {
+                
+                do {
+                    try self.managedObjectContext.save()
+                    
+                } catch {
+                    
+                    fatalError("Failure to save context: \(error)")
+                }
+            }
+        } catch {
+            
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

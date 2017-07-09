@@ -13,22 +13,29 @@ class TFNetworkProvider {
     
     func fetchJSON() {
         
-        let baseURL = URL(string: "https://api.coinmarketcap.com/v1/ticker/?limit=100")!
+        let url = URL(string: "https://api.coinmarketcap.com/v1/ticker/?limit=10")!
         
-        let task = URLSession.shared.dataTask(with: baseURL) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let data = data {
                 let updateManager = TFUpdateManager()
                 
                 updateManager.parseJON(json: data)
             }
+            
+            if let response = response as? HTTPURLResponse {
+                
+                print(response)
+            }
+            
+            if let error = error {
+                
+                print("Error connecting to the server: \(error)")
+            }
         }
         
         task.resume()
     }
-    
-    
-    
 }
 
 
