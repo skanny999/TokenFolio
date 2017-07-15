@@ -2,7 +2,7 @@
 //  Token+CoreDataProperties.swift
 //  TokenFolio
 //
-//  Created by Riccardo Scanavacca on 08/07/2017.
+//  Created by Riccardo Scanavacca on 15/07/2017.
 //  Copyright © 2017 Riccardo Scanavacca. All rights reserved.
 //
 
@@ -37,5 +37,7 @@ extension Token {
     @NSManaged public var volume24hEur: String?
     @NSManaged public var volume24hGbp: String?
     @NSManaged public var volume24hUsd: String?
+    @NSManaged public var quantity: NSNumber?
+    @NSManaged public var totalValue: String?
 
 }

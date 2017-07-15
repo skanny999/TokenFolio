@@ -52,135 +52,63 @@ public class Token: NSManagedObject {
         
     }
     
-    
-    
     func assignValuesToTokenFromDictionary(_ dict : [String : Any]) {
         
         let key = keys()
         
-        if let availableSupply = dict[key.availableSupply] as? String {
-            
+        if let availableSupply = dict[key.availableSupply] as? String,
+            let lastUpdated = dict[key.lastUpdated] as? String,
+            let id = dict[key.id] as? String,
+            let marketCapEur = dict[key.marketCapEur] as? String,
+            let marketCapGbp = dict[key.marketCapGbp] as? String,
+            let marketCapUsd = dict[key.marketCapUsd] as? String,
+            let name = dict[key.name] as? String,
+            let percentChange1h = dict[key.percentChange1h] as? String,
+            let percentChange24h = dict[key.percentChange24h] as? String,
+            let priceBtc = dict[key.priceBtc]  as? String,
+            let priceEur = dict[key.priceEur] as? String,
+            let priceGbp = dict[key.priceGbp] as? String,
+            let priceUsd = dict[key.priceUsd] as? String,
+            let rank = dict[key.rank] as? String,
+            let symbol = dict[key.symbol] as? String,
+            let totalSupply = dict[key.totalSupply] as? String,
+            let volume24hEur = dict[key.volume24hEur] as? String,
+            let volume24hGbp = dict[key.volume24hGbp] as? String,
+            let volume24hUsd = dict[key.volume24hUsd] as? String
+        
+        {
             self.availableSupply = availableSupply
-        }
-        
-        if let id = dict[key.id] as? String  {
-            
             self.id = id
-        }
-        
-        if let lastUpdated = dict[key.lastUpdated] as? String  {
-            
-            let seconds = Double(lastUpdated)
-            self.lastUpdated = NSDate(timeIntervalSince1970:seconds!)
-        }
-        
-        if let marketCapEur = dict[key.marketCapEur] as? String  {
-            
+            self.lastUpdated = NSDate(timeIntervalSince1970:Double(lastUpdated)!)
             self.marketCapEur = marketCapEur
-            
-        } else {
-            
-            self.marketCapEur = nil
-        }
-        
-        if let marketCapGbp = dict[key.marketCapGbp] as? String  {
-            
+            self.marketCapEur = marketCapEur
             self.marketCapGbp = marketCapGbp
-            
-        } else {
-            
-            self.marketCapGbp = nil
-        }
-        
-        if let marketCapUsd = dict[key.marketCapUsd] as? String  {
-            
+            self.marketCapGbp = marketCapGbp
             self.marketCapUsd = marketCapUsd
-        }
-        
-        if let name = dict[key.name] as? String  {
-            
             self.name = name
-        }
-        
-        if let percentChange1h = dict[key.percentChange1h] as? String  {
-            
             self.percentChange1h = percentChange1h
-        }
-        
-        if let percentChange24h = dict[key.percentChange24h] as? String  {
-            
             self.percentChange24h = percentChange24h
-        }
-        
-        if let priceBtc = dict[key.priceBtc]  as? String {
-            
             self.priceBtc = priceBtc
-        }
-        
-        if let priceEur = dict[key.priceEur] as? String  {
-            
             self.priceEur = priceEur
-            
-        } else {
-            
-            self.priceEur = nil
-        }
-        
-        if let priceGbp = dict[key.priceGbp] as? String  {
-            
+            self.priceEur = priceEur
             self.priceGbp = priceGbp
-            
-        } else {
-            
-            self.priceGbp = nil
-        }
-        
-        if let priceUsd = dict[key.priceUsd] as? String {
-            
+            self.priceGbp = priceBtc
             self.priceUsd = priceUsd
-        }
-        
-        if let rank = dict[key.rank] as? String  {
-            
-            let rankInt = Int16(rank)
-            self.rank = rankInt!
-        }
-        
-        if let symbol = dict[key.symbol] as? String  {
-            
+            self.rank = Int16(rank)!
             self.symbol = symbol
-        }
-        
-        if let totalSupply = dict[key.totalSupply] as? String  {
-            
             self.totalSupply = totalSupply
-        }
-        
-        if let volume24hEur = dict[key.volume24hEur] as? String  {
-            
             self.volume24hEur = volume24hEur
-            
-        } else {
-            
-            self.volume24hEur = nil
-        }
-        
-        if let volume24hGbp = dict[key.volume24hGbp] as? String  {
-            
+            self.volume24hEur = volume24hEur
             self.volume24hGbp = volume24hGbp
-            
-        } else {
-            
-            self.volume24hGbp = nil
-        }
-        
-        if let volume24hUsd = dict[key.volume24hUsd] as? String  {
-            
+            self.volume24hGbp = volume24hGbp
             self.volume24hUsd = volume24hUsd
         }
-        
-        print(self)
+
     }
+    
+    
+    
+
     
 
     public func deleteInManagedObjectContext(_ mod : NSManagedObjectContext) {
