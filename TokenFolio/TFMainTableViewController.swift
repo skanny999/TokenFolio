@@ -78,7 +78,7 @@ class TFMainTableViewController: UITableViewController {
         let token = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = token.name
-        cell.detailTextLabel?.text = "$" + token.priceUsd!
+//        cell.detailTextLabel?.text = "$" + token.priceUsd!
         
         return cell
     }

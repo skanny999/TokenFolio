@@ -18,6 +18,7 @@
 		8B63741E1F1A69C900B44AF8 /* TFAddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63741D1F1A69C900B44AF8 /* TFAddTokenViewController.swift */; };
 		8B6374211F1A7F0600B44AF8 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63741F1F1A7F0600B44AF8 /* User+CoreDataClass.swift */; };
 		8B6374221F1A7F0600B44AF8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6374201F1A7F0600B44AF8 /* User+CoreDataProperties.swift */; };
+		8B6374241F1A92D800B44AF8 /* TFTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6374231F1A92D800B44AF8 /* TFTokenTableViewCell.swift */; };
 		8B8ABF9C1EFC08CF00DD0AC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */; };
 		8B8ABFA11EFC08CF00DD0AC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8ABF9F1EFC08CF00DD0AC5 /* Main.storyboard */; };
 		8B8ABFA41EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABFA21EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		8B63741D1F1A69C900B44AF8 /* TFAddTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFAddTokenViewController.swift; sourceTree = "<group>"; };
 		8B63741F1F1A7F0600B44AF8 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B6374201F1A7F0600B44AF8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B6374231F1A92D800B44AF8 /* TFTokenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TFTokenTableViewCell.swift; path = Views/TFTokenTableViewCell.swift; sourceTree = "<group>"; };
 		8B8ABF981EFC08CF00DD0AC5 /* TokenFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B8ABFA01EFC08CF00DD0AC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		8B6374251F1A92E600B44AF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B6374231F1A92D800B44AF8 /* TFTokenTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		8B8ABF8F1EFC08CE00DD0AC5 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				8B8ABF9B1EFC08CF00DD0AC5 /* AppDelegate.swift */,
+				8B6374251F1A92E600B44AF8 /* Views */,
 				8B412BB91EFC78DF00BB3850 /* ViewControllers */,
 				8B412BBA1EFC78EA00BB3850 /* Model */,
 				8B5814571EFED4300065C3A4 /* Services */,
@@ -411,6 +422,7 @@
 				8B63741E1F1A69C900B44AF8 /* TFAddTokenViewController.swift in Sources */,
 				8B8ABF9C1EFC08CF00DD0AC5 /* AppDelegate.swift in Sources */,
 				8B5814561EFED0CE0065C3A4 /* Token+CoreDataProperties.swift in Sources */,
+				8B6374241F1A92D800B44AF8 /* TFTokenTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

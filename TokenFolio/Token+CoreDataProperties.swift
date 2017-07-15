@@ -27,10 +27,10 @@ extension Token {
     @NSManaged public var percentChange1h: String?
     @NSManaged public var percentChange7d: String?
     @NSManaged public var percentChange24h: String?
-    @NSManaged public var priceBtc: String?
-    @NSManaged public var priceEur: String?
-    @NSManaged public var priceGbp: String?
-    @NSManaged public var priceUsd: String?
+    @NSManaged public var priceBtc: NSNumber?
+    @NSManaged public var priceEur: NSNumber?
+    @NSManaged public var priceGbp: NSNumber?
+    @NSManaged public var priceUsd: NSNumber?
     @NSManaged public var rank: Int16
     @NSManaged public var symbol: String?
     @NSManaged public var totalSupply: String?
@@ -39,5 +39,9 @@ extension Token {
     @NSManaged public var volume24hUsd: String?
     @NSManaged public var quantity: NSNumber?
     @NSManaged public var totalValue: String?
+    @NSManaged public var totalValueUsd: String?
+    @NSManaged public var totalValueGbp: String?
+    @NSManaged public var totalValueEur: String?
+    @NSManaged public var totalValueBtc: String?
 
 }

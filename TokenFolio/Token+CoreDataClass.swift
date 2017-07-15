@@ -88,12 +88,10 @@ public class Token: NSManagedObject {
             self.name = name
             self.percentChange1h = percentChange1h
             self.percentChange24h = percentChange24h
-            self.priceBtc = priceBtc
-            self.priceEur = priceEur
-            self.priceEur = priceEur
-            self.priceGbp = priceGbp
-            self.priceGbp = priceBtc
-            self.priceUsd = priceUsd
+            self.priceBtc = NSNumber(value: Double(priceBtc)!)
+            self.priceEur = NSNumber(value: Double(priceEur)!)
+            self.priceGbp = NSNumber(value: Double(priceGbp)!)
+            self.priceUsd = NSNumber(value: Double(priceUsd)!)
             self.rank = Int16(rank)!
             self.symbol = symbol
             self.totalSupply = totalSupply

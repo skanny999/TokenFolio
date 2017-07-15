@@ -12,25 +12,30 @@
         <attribute name="percentChange1h" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percentChange7d" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percentChange24h" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="priceBtc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="priceEur" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="priceGbp" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="priceUsd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priceBtc" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priceEur" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priceGbp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priceUsd" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalSupply" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalValueBtc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalValueEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalValueGbp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalValueUsd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="volume24hEur" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="volume24hGbp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="volume24hUsd" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tokens" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tokens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Token" syncable="YES"/>
+        <relationship name="tokens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Token" inverseName="user" inverseEntity="Token" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Token" positionX="-63" positionY="-18" width="128" height="390"/>
+        <element name="Token" positionX="-63" positionY="-18" width="128" height="463"/>
         <element name="User" positionX="232" positionY="81" width="128" height="73"/>
     </elements>
 </model>
