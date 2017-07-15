@@ -45,13 +45,7 @@ class TFMainTableViewController: UITableViewController {
         }
 
     }
-    
 
-    @IBAction func barButtonItemPressed(_ sender: Any) {
-        
-        configureFetchedResultsController()
-        
-    }
 
     
     // MARK: - Table view data source
@@ -118,6 +112,19 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ADD_SEGUE" {
+            
+            
+        }
+        
     }
     
 
