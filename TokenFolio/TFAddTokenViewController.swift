@@ -44,12 +44,40 @@ class TFAddTokenViewController: UIViewController {
     func updateLabelsForToken (_ token : Token) {
         
         selectTokenLabel.text = token.name
+        quantityTextField.text = token.quantity?.stringValue
         
+        let currency = TFUserSettings.currentCurrency()!
         
+        switch currency {
+        case .Usd:
+            currentPriceLabel.text = stringPriceForCurrency(token.priceUsd!, .Usd)
+        case .Eur:
+            currentPriceLabel.text = stringPriceForCurrency(token.priceEur!, .Eur)
+        case .Gbp:
+            currentPriceLabel.text = stringPriceForCurrency(token.priceGbp!, .Gbp)
+        default:
+            currentPriceLabel.text = "N/A"
+        }
         
     }
- 
     
+    func stringPriceForCurrency(_ price: NSNumber, _ currency: Currency) -> String {
+
+        let symbol : String
+        
+        switch currency {
+        case .Usd:
+            symbol = "$"
+        case .Eur:
+            symbol = "€"
+        case .Gbp:
+            symbol = "£"
+        default:
+            symbol = "$"
+        }
+        
+        return String(format: "%@ %.2f", symbol, price.doubleValue)
+    }
 
 }
 

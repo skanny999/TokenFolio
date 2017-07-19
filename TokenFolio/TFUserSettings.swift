@@ -21,11 +21,17 @@ class TFUserSettings {
     class func currentCurrency() -> Currency? {
         
         let userDefaults = UserDefaults.standard
-        let currencyRawValue  = userDefaults.string(forKey:"currency")
-        
-        if let currency = Currency(rawValue: currencyRawValue!) {
+        if let currencyRawValue  = userDefaults.string(forKey:"currency") {
             
-            return currency
+            if let currency = Currency(rawValue: currencyRawValue) {
+                
+                return currency
+            }
+            else {
+                
+                setCurrentCurrency(Currency.Usd)
+                return Currency.Usd
+            }
         }
         else {
             
