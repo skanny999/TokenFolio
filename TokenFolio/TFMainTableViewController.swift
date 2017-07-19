@@ -74,10 +74,10 @@ class TFMainTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TOKEN_CELL", for: indexPath) as! TFTokenTableViewCell
         let token = fetchedResultsController.object(at: indexPath)
         
-        cell.textLabel?.text = token.name
+//        cell.textLabel?.text = token.name
 //        cell.detailTextLabel?.text = "$" + token.priceUsd!
         
         return cell

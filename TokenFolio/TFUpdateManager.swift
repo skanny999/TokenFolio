@@ -82,15 +82,18 @@ class TFUpdateManager {
             
             let tokens = try! fetchRequest.execute()
             
-            for token in tokens {
+            if tokens.count > 0 {
                 
-                if !self.jsonIDs.contains(token.id!) {
+                for token in tokens {
                     
-                    token.deleteInManagedObjectContext(mod)
+                    if !self.jsonIDs.contains(token.id!) {
+                        
+                        token.deleteInManagedObjectContext(mod)
+                    }
                 }
+                
+                self.save()
             }
-            
-            self.save()
         }
     }
     
