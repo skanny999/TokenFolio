@@ -15,18 +15,36 @@ class TFCoreDataProvider {
     var managedObjectContext : NSManagedObjectContext
     var backgroundManagedObjectContext : NSManagedObjectContext
     
-    init(_ mod : NSManagedObjectContext,  bmod : NSManagedObjectContext) {
+    init() {
         
-        managedObjectContext = mod
-        backgroundManagedObjectContext = bmod
-        
+        managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundManagedObjectContext.parent = managedObjectContext
         
     }
     
-
+    func fetchAllTokens(completion: @escaping ([Token]) -> ()) {
+        
+        managedObjectContext.perform {
+        
+        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+        
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+            
+            let results = try! fetchRequest.execute()
+            
+            completion (results)
+            
+        } 
+        
+    }
     
-    
-    
-    
-
 }
+
+
+
+    
+    
+    
+
+

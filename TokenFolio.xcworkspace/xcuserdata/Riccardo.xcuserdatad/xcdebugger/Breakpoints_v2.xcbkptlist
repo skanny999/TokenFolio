@@ -17,45 +17,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TokenFolio/Token+CoreDataClass.swift"
-            timestampString = "521843608.981592"
+            filePath = "TokenFolio/AppDelegate.swift"
+            timestampString = "522180496.852161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "assignValuesToTokenFromDictionary(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFUpdateManager.swift"
-            timestampString = "521844401.593353"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "deleteMissingTokensInManagedObjectContext(in:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFUpdateManager.swift"
-            timestampString = "521844489.135242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "deleteMissingTokensInManagedObjectContext(in:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "createUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

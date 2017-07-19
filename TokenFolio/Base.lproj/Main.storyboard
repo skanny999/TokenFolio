@@ -262,7 +262,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tokenPicker" destination="WIV-5d-qe4" id="KCE-oS-90X"/>
+                        <outlet property="currentPriceLabel" destination="gPv-dx-SmT" id="OCt-D8-fAt"/>
+                        <outlet property="quantityTextField" destination="BBI-Fo-THW" id="SdH-Bp-uzF"/>
+                        <outlet property="selectTokenLabel" destination="u1J-vF-SqF" id="bvQ-cZ-iZJ"/>
+                        <outlet property="tokenPicker" destination="WIV-5d-qe4" id="Ahd-ao-Vjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTa-ry-0Nd" userLabel="First Responder" sceneMemberID="firstResponder"/>

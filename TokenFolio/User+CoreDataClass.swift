@@ -10,6 +10,23 @@ import Foundation
 import CoreData
 
 @objc(User)
+
 public class User: NSManagedObject {
+    
+    class func newUserInManagedObjectContext(_ mod : NSManagedObjectContext) {
+        
+        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: mod) as! User
+        user.currency = "USD"
+        
+        
+        do {
+            try mod.save()
+        }
+        catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        
+    }
 
 }

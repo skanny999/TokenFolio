@@ -42,6 +42,7 @@ class TFUpdateManager {
                 self.deleteMissingTokensInManagedObjectContext(in: self.backgroundManagedObjectContext)
 
                 self.save()
+                
             }
         }
     }
@@ -86,15 +87,24 @@ class TFUpdateManager {
                 
                 for token in tokens {
                     
-                    if !self.jsonIDs.contains(token.id!) {
+                    if let tokenId = token.id {
                         
+                        if !self.jsonIDs.contains(tokenId) {
+                            
+                            token.deleteInManagedObjectContext(mod)
+                        }
+                        
+                    } else {
                         token.deleteInManagedObjectContext(mod)
                     }
                 }
                 
                 self.save()
+                
             }
         }
+        
+        
     }
     
     
