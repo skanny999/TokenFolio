@@ -98,14 +98,11 @@ class TFUpdateManager {
                         token.deleteInManagedObjectContext(mod)
                     }
                 }
-                
                 self.save()
-                
             }
         }
-        
-        
     }
+    
     
     
     func save() {

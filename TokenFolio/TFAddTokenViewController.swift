@@ -12,17 +12,16 @@ import UIKit
 class TFAddTokenViewController: UIViewController {
 
 
-    @IBOutlet weak var selectTokenLabel: UILabel!
+    @IBOutlet weak var selectTokenTextField: UITextField!
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var quantityTextField: UITextField!
     
-    @IBOutlet weak var tokenPicker: UIPickerView!
+    var picker = UIPickerView()
     
     var tokens = [Token]()
     var token = Token()
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
 
         loadTokens()
@@ -43,23 +42,49 @@ class TFAddTokenViewController: UIViewController {
     
     func updateLabelsForToken (_ token : Token) {
         
-        selectTokenLabel.text = token.name
+        selectTokenTextField.text = token.name
         quantityTextField.text = token.quantity?.stringValue
         
-        let currency = TFUserSettings.currentCurrency()!
-        
-        switch currency {
+        switch TFUserSettings.currentCurrency()!{
         case .Usd:
-            currentPriceLabel.text = stringPriceForCurrency(token.priceUsd!, .Usd)
+            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceUsd!)
         case .Eur:
-            currentPriceLabel.text = stringPriceForCurrency(token.priceEur!, .Eur)
+            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceEur!)
         case .Gbp:
-            currentPriceLabel.text = stringPriceForCurrency(token.priceGbp!, .Gbp)
+            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceGbp!)
         default:
             currentPriceLabel.text = "N/A"
         }
-        
     }
+    
+    
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        
+        if tokens.contains(token) {
+            
+            token.isSelected = true
+            token.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Alert", message: "Please select token and add a quantity", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    
+    
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
     
     func stringPriceForCurrency(_ price: NSNumber, _ currency: Currency) -> String {
 
@@ -78,15 +103,15 @@ class TFAddTokenViewController: UIViewController {
         
         return String(format: "%@ %.2f", symbol, price.doubleValue)
     }
-
 }
 
 extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func configurePicker() {
         
-        tokenPicker.delegate = self
-        tokenPicker.dataSource = self
+        selectTokenTextField.inputView = picker
+        picker.delegate = self
+        picker.dataSource = self
     }
     
     

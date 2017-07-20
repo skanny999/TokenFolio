@@ -35,8 +35,23 @@ class TFCoreDataProvider {
             
             completion (results)
             
-        } 
+        }
+    }
+    
+    
+    func selectedTokensFetchResultController() -> NSFetchedResultsController<Token> {
         
+        let request = NSFetchRequest<Token>(entityName: "Token")
+        let predicate = NSPredicate(format: "isSelected == 1");
+        let sortDescriptor = NSSortDescriptor(key: "totalValueBtc", ascending: true)
+        request.predicate = predicate
+        request.sortDescriptors = [sortDescriptor]
+        
+        return NSFetchedResultsController<Token>(fetchRequest: request,
+                                                 managedObjectContext: managedObjectContext,
+                                                 sectionNameKeyPath: nil,
+                                                 cacheName: nil)
+
     }
     
 }

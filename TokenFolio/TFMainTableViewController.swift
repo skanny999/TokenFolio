@@ -24,15 +24,9 @@ class TFMainTableViewController: UITableViewController {
     
     func configureFetchedResultsController() {
         
-        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<Token>(entityName: "Token")
-        let rankSort = NSSortDescriptor(key: "rank", ascending: true)
-        request.sortDescriptors = [rankSort]
+        let provider = TFCoreDataProvider()
         
-        self.fetchedResultsController = NSFetchedResultsController<Token>(fetchRequest: request,
-                                                                     managedObjectContext: moc,
-                                                                     sectionNameKeyPath: nil,
-                                                                     cacheName: nil)
+        self.fetchedResultsController = provider.selectedTokensFetchResultController()
         self.fetchedResultsController.delegate = self
         
         do {
@@ -77,8 +71,7 @@ class TFMainTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TOKEN_CELL", for: indexPath) as! TFTokenTableViewCell
         let token = fetchedResultsController.object(at: indexPath)
         
-//        cell.textLabel?.text = token.name
-//        cell.detailTextLabel?.text = "$" + token.priceUsd!
+        cell.configureCellWithToken(token)
         
         return cell
     }
