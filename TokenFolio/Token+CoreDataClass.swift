@@ -181,74 +181,14 @@ public class Token: NSManagedObject {
         
         if (quantity?.intValue)! > 0 {
             
-            calculateTotalValue()
-            
-            
-//            
-//            
-//            if (self.user?.currency != nil) {
-//                
-//                if self.user?.currency == "BTC" {
-//
-//                    self.totalValueBtc! = String((self.quantity?.doubleValue)! * (self.priceBtc?.doubleValue)!)
-//                    
-//                } else {
-//                    
-//                    self.totalValueBtc! = "0"
-//                }
-//                
-//                if self.user?.currency == "USD" {
-//                    
-//                    self.totalValueUsd! = String((self.quantity?.doubleValue)! * (self.priceUsd?.doubleValue)!)
-//                    
-//                } else {
-//                    
-//                    self.totalValueUsd! = "0"
-//                }
-//                
-//                if self.user?.currency == "USD" {
-//                    
-//                    self.totalValueGbp! = String((self.quantity?.doubleValue)! * (self.priceGbp?.doubleValue)!)
-//                    
-//                } else {
-//                    
-//                    self.totalValueGbp! = "0"
-//                }
-//                
-//                if self.user?.currency == "EUR" {
-//                    
-//                    self.totalValueEur! = String((self.quantity?.doubleValue)! * (self.priceEur?.doubleValue)!)
-//                    
-//                } else {
-//                    
-//                    self.totalValueEur! = "0"
-//                }
-//                
-//            }
-//            
+            Value.setTotalValueForToken(self)
             
         }
         print(self)
     }
     
     
-    func calculateTotalValue() {
-        
-        let currency = TFUserSettings.currentCurrency()!
-        
-        switch  currency {
-            
-        case .Usd:
-            self.totalValueUsd! = String((self.quantity?.doubleValue)! * (self.priceUsd?.doubleValue)!)
-        case .Eur:
-            self.totalValueEur! = String((self.quantity?.doubleValue)! * (self.priceEur?.doubleValue)!)
-        case .Gbp:
-            self.totalValueGbp! = String((self.quantity?.doubleValue)! * (self.priceGbp?.doubleValue)!)
-        default:
-            self.totalValueBtc! = String((self.quantity?.doubleValue)! * (self.priceBtc?.doubleValue)!)
-        }
-        
-    }
+
 
     
 

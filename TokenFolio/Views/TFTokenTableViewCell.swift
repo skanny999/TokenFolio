@@ -24,26 +24,24 @@ class TFTokenTableViewCell: UITableViewCell {
         
         symbolLabel.text = token.symbol
         nameLabel.text = token.name
-        quantityLabel.text = String(format: "Qty: %@", (token.quantity?.intValue)!)
+        quantityLabel.text = "Qty: \((token.quantity?.intValue)!)"
+        
+        let percentChange = Double(token.percentChange24h!)!
+        
+        if percentChange > 0.0 {
+            
+            
+        } else {
+            
+            
+        }
+
         variationLabel.text = token.percentChange24h
         variationTimeLabel.text = "24h"
         
-        switch TFUserSettings.currentCurrency()! {
-        case .Usd:
-            priceLabel.text = TFFormatter.currencyFromNumber(token.priceUsd!)
-            totalValueLabel.text = token.totalValueUsd!
-        case .Eur:
-            priceLabel.text = TFFormatter.currencyFromNumber(token.priceUsd!)
-            totalValueLabel.text = token.totalValueEur!
-        case .Gbp:
-            priceLabel.text = TFFormatter.currencyFromNumber(token.priceUsd!)
-            totalValueLabel.text = token.totalValueGbp!
-        default:
-            priceLabel.text = "N/A"
-            totalValueLabel.text = "N/A"
-        }
-        
-        
+        priceLabel.text = Value.formattedTokenPrice(token)
+        totalValueLabel.text = Value.formattedTotalValue(token)
+
     }
     
 

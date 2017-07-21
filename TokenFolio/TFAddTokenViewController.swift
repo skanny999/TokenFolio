@@ -65,6 +65,9 @@ class TFAddTokenViewController: UIViewController {
             
             token.isSelected = true
             token.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
+            Value.setTotalValueForToken(token)
+            
+            dismiss(animated: true, completion: nil)
             
         } else {
             
