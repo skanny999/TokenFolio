@@ -99,7 +99,6 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
         case .update:
             break
-        // update cell at indexPath
         case .move:
             tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
             tableView.insertRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)

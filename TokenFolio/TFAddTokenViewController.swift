@@ -12,7 +12,8 @@ import UIKit
 class TFAddTokenViewController: UIViewController {
 
 
-    @IBOutlet weak var selectTokenTextField: UITextField!
+
+    @IBOutlet weak var selectTokenLabel: UILabel!
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var quantityTextField: UITextField!
     
@@ -25,8 +26,13 @@ class TFAddTokenViewController: UIViewController {
         super.viewDidLoad()
 
         loadTokens()
-        
+        configureGestureRecogniser()
+        selectTokenLabel.text = "Select Token"
+        quantityTextField.isEnabled = false
+
     }
+    
+
     
     func loadTokens() {
         
@@ -40,23 +46,20 @@ class TFAddTokenViewController: UIViewController {
         }
     }
     
-    func updateLabelsForToken (_ token : Token) {
+    
+    func configureGestureRecogniser() {
         
-        selectTokenTextField.text = token.name
-        quantityTextField.text = token.quantity?.stringValue
-        
-        switch TFUserSettings.currentCurrency()!{
-        case .Usd:
-            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceUsd!)
-        case .Eur:
-            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceEur!)
-        case .Gbp:
-            currentPriceLabel.text = TFFormatter.currencyFromNumber(token.priceGbp!)
-        default:
-            currentPriceLabel.text = "N/A"
-        }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TFAddTokenViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
+    
+    func updateLabelsForToken (_ token : Token) {
+        
+        selectTokenLabel.text = token.name
+        quantityTextField.text = token.quantity?.stringValue
+        currentPriceLabel.text = Value.formattedTokenPrice(token)
+    }
     
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -69,15 +72,17 @@ class TFAddTokenViewController: UIViewController {
             
             dismiss(animated: true, completion: nil)
             
+        } else if token.quantity?.intValue == 0 {
+            
+            showAlertWithText("Please select token")
+            
         } else {
             
-            let alert = UIAlertController(title: "Alert", message: "Please select token and add a quantity", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showAlertWithText("Please enter a valid quantity")
             
         }
     }
-    
+
     
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
@@ -85,34 +90,30 @@ class TFAddTokenViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
-    func stringPriceForCurrency(_ price: NSNumber, _ currency: Currency) -> String {
 
-        let symbol : String
+    @IBAction func selectTokenLabelTapped(_ sender: Any) {
         
-        switch currency {
-        case .Usd:
-            symbol = "$"
-        case .Eur:
-            symbol = "€"
-        case .Gbp:
-            symbol = "£"
-        default:
-            symbol = "$"
-        }
-        
-        return String(format: "%@ %.2f", symbol, price.doubleValue)
+        dismissKeyboard()
+        showPicker()
+
     }
+    
+    
+
 }
 
-extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+
+extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     func configurePicker() {
         
-        selectTokenTextField.inputView = picker
+        picker = UIPickerView(frame: CGRect(x: 0,
+                                            y: self.view.bounds.size.height,
+                                            width: self.view.bounds.width,
+                                            height: 224))
+        view.addSubview(picker)
+
         picker.delegate = self
         picker.dataSource = self
     }
@@ -136,9 +137,51 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        quantityTextField.isEnabled = true
         token = tokens[row]
         updateLabelsForToken(token)
+    }
+    
+    
+    
+    func showPicker() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.picker.frame = CGRect(x: 0,
+                                       y: self.view.bounds.size.height - self.picker.bounds.size.height,
+                                       width: self.picker.bounds.size.width,
+                                       height: self.picker.bounds.size.height)
+            
+        })
+    }
+    
+    
+    func hidePicker() {
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.picker.frame = CGRect(x: 0,
+                                       y: self.view.bounds.size.height,
+                                       width: self.picker.bounds.size.width,
+                                       height: 224)
+        })
+    }
+    
+    
+    func dismissKeyboard() {
+        
+        view.endEditing(true)
+        hidePicker()
+    }
+    
+    
+    func showAlertWithText(_ text: String) {
+        
+        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
         
     }
     
 }
+
+

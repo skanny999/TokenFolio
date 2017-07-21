@@ -18,6 +18,8 @@ enum Currency : String {
     
 }
 
+
+
 struct Value {
     
     static func setTotalValueForToken(_ token: Token) {
@@ -96,7 +98,5 @@ struct Value {
             return "$"
         }
     }
-    
-  
- 
+
 }

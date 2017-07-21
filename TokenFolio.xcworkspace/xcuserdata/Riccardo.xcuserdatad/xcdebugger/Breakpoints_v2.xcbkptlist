@@ -17,13 +17,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFValues.swift"
-            timestampString = "522325395.688495"
+            filePath = "TokenFolio/Views/TFTokenTableViewCell.swift"
+            timestampString = "522334783.155609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "setTotalValueForToken(_:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "configureCellWithToken(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -33,14 +33,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFValues.swift"
-            timestampString = "522325728.65675"
+            filePath = "TokenFolio/TFAddTokenViewController.swift"
+            timestampString = "522348723.293698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "formattedTokenPrice(_:)"
-            landmarkType = "7">
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "TFAddTokenViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -49,13 +49,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFValues.swift"
-            timestampString = "522326088.972695"
+            filePath = "TokenFolio/TFAddTokenViewController.swift"
+            timestampString = "522348078.124337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "formattedTotalValue(_:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "addButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

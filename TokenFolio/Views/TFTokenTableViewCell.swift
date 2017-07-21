@@ -26,17 +26,21 @@ class TFTokenTableViewCell: UITableViewCell {
         nameLabel.text = token.name
         quantityLabel.text = "Qty: \((token.quantity?.intValue)!)"
         
-        let percentChange = Double(token.percentChange24h!)!
-        
-        if percentChange > 0.0 {
+        if let percentChange = Double(token.percentChange24h!) {
             
-            
-        } else {
-            
-            
+            if percentChange > 0.0 {
+                
+                variationLabel.textColor = UIColor(red: 91/255, green: 211/255, blue: 0/255, alpha: 1.0)
+                variationLabel.text = String(format: "+%@", token.percentChange24h!)
+                
+            } else {
+                
+                variationLabel.textColor = UIColor(red: 233/255, green: 42/255, blue: 0/255, alpha: 1.0)
+                variationLabel.text = String(format: "%@", token.percentChange24h!)
+            }
+
         }
 
-        variationLabel.text = token.percentChange24h
         variationTimeLabel.text = "24h"
         
         priceLabel.text = Value.formattedTokenPrice(token)
