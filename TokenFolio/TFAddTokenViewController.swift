@@ -28,7 +28,8 @@ class TFAddTokenViewController: UIViewController {
         loadTokens()
         configureGestureRecogniser()
         selectTokenLabel.text = "Select Token"
-        quantityTextField.isEnabled = false
+        quantityTextField.delegate = self
+//        quantityTextField.isEnabled = false
 
     }
     
@@ -64,22 +65,22 @@ class TFAddTokenViewController: UIViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        if tokens.contains(token) {
+        if !tokens.contains(token) {
+            
+            showAlertWithText("Please select token")
+            
+        } else if !(quantityTextField.text?.isNumber)!  {
+            
+            showAlertWithText("Please enter a valid quantity")
+            
+        } else {
             
             token.isSelected = true
             token.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
             Value.setTotalValueForToken(token)
             
             dismiss(animated: true, completion: nil)
-            
-        } else if token.quantity?.intValue == 0 {
-            
-            showAlertWithText("Please select token")
-            
-        } else {
-            
-            showAlertWithText("Please enter a valid quantity")
-            
+
         }
     }
 
@@ -97,8 +98,6 @@ class TFAddTokenViewController: UIViewController {
         showPicker()
 
     }
-    
-    
 
 }
 
@@ -137,9 +136,24 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        quantityTextField.isEnabled = true
+//        quantityTextField.isEnabled = true
         token = tokens[row]
         updateLabelsForToken(token)
+    }
+    
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if !tokens.contains(token) {
+            
+            showAlertWithText("Please select a token before adding a quantity")
+            
+            return false
+            
+        } else {
+            
+            return true
+        }
     }
     
     
@@ -181,6 +195,8 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
         
         
     }
+    
+    
     
 }
 
