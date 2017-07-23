@@ -81,7 +81,7 @@ class TFUpdateManager {
                     }
                 }
                 
-//                TFCoreDataProvider.shared.save()
+                TFCoreDataProvider.shared.save()
             }
         }
     }

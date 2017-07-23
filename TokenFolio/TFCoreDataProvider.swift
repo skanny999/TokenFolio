@@ -37,7 +37,7 @@ class TFCoreDataProvider {
     
     func fetchAllTokens(completion: @escaping ([Token]) -> ()) {
         
-        managedObjectContext.perform {
+        backgroundManagedObjectContext.perform {
             
             let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
         
@@ -52,7 +52,7 @@ class TFCoreDataProvider {
     
     func fetchTokensWithId( _ id : String, completion: @escaping ([Token]) ->()) {
         
-        managedObjectContext.perform {
+        backgroundManagedObjectContext.perform {
             
             let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
             
