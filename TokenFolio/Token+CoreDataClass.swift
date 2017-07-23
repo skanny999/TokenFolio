@@ -12,10 +12,7 @@ import CoreData
 
 
 public class Token: NSManagedObject {
-    
-    static let backgroundManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
-    
-    
+
     struct keys {
         
         let availableSupply = "available_supply"
@@ -43,13 +40,12 @@ public class Token: NSManagedObject {
     
 
     
-    class func newTokenFromDictionaryInManagedObjectContext(_ dict : [String : Any], _ mod : NSManagedObjectContext) {
+    class func newTokenFromDictionary(_ dict : [String : Any]) {
         
-        let token = NSEntityDescription.insertNewObject(forEntityName: "Token", into: mod) as! Token
+        let token = TFCoreDataProvider.shared.newToken()
         
         token.assignValuesToTokenFromDictionary(dict)
-        
-        
+  
     }
     
     
@@ -190,11 +186,9 @@ public class Token: NSManagedObject {
     
 
 
-    
-
-    public func deleteInManagedObjectContext(_ mod : NSManagedObjectContext) {
+    public func delete() {
         
-        mod.delete(self)
+        TFCoreDataProvider.shared.backgroundManagedObjectContext.delete(self)
     }
     
 

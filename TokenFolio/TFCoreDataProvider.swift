@@ -15,6 +15,12 @@ class TFCoreDataProvider {
     var managedObjectContext : NSManagedObjectContext
     var backgroundManagedObjectContext : NSManagedObjectContext
     
+    static let shared: TFCoreDataProvider = {
+        let instance = TFCoreDataProvider()
+        
+        return instance
+    }()
+    
     init() {
         
         managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -23,11 +29,17 @@ class TFCoreDataProvider {
         
     }
     
+    func newToken() -> Token {
+        
+        return NSEntityDescription.insertNewObject(forEntityName: "Token", into: backgroundManagedObjectContext) as! Token
+
+    }
+    
     func fetchAllTokens(completion: @escaping ([Token]) -> ()) {
         
         managedObjectContext.perform {
-        
-        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+            
+            let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
         
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
             
@@ -36,6 +48,27 @@ class TFCoreDataProvider {
             completion (results)
             
         }
+    }
+    
+    func fetchTokensWithId( _ id : String, completion: @escaping ([Token]) ->()) {
+        
+        managedObjectContext.perform {
+            
+            let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+            
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            
+            let results = try! fetchRequest.execute()
+            
+            completion (results)
+            
+        }
+    }
+    
+    func tokensFetchRequest() -> NSFetchRequest<Token> {
+        
+        return NSFetchRequest<Token>(entityName: "Token")
+        
     }
     
     
@@ -54,6 +87,31 @@ class TFCoreDataProvider {
 
     }
     
+    
+    
+    
+    func save() {
+        
+        do {
+            
+            try backgroundManagedObjectContext.save()
+            
+            managedObjectContext.perform {
+                
+                do {
+                    try self.managedObjectContext.save()
+                    
+                } catch {
+                    
+                    fatalError("Failure to save context: \(error)")
+                }
+            }
+        } catch {
+            
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+  
 }
 
 

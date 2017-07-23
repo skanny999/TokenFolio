@@ -11,20 +11,8 @@ import CoreData
 
 class TFUpdateManager {
     
-    var managedObjectContext : NSManagedObjectContext
-    var backgroundManagedObjectContext : NSManagedObjectContext
-    
     var jsonIDs = [String]()
-    
-    init() {
-        
-        managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        backgroundManagedObjectContext.parent = managedObjectContext
-        
-    }
-    
-    
+ 
     
     func parseJON (json: Data) {
         
@@ -32,16 +20,16 @@ class TFUpdateManager {
         
         if let jsonArray =  json as? [Any] {
             
-            backgroundManagedObjectContext.perform {
+            TFCoreDataProvider.shared.backgroundManagedObjectContext.perform {
                 
                 for dict in jsonArray {
                     
-                    self.updateTokensWithDictionaryInManagedObjectContext(dict as! [String : Any], self.backgroundManagedObjectContext)
+                    self.updateTokenWithDictionary(dict as! [String : Any])
                 }
                 
-                self.deleteMissingTokensInManagedObjectContext(in: self.backgroundManagedObjectContext)
+                self.deleteMissingTokens()
 
-                self.save()
+                TFCoreDataProvider.shared.save()
                 
             }
         }
@@ -49,39 +37,32 @@ class TFUpdateManager {
     
     
     
-    func updateTokensWithDictionaryInManagedObjectContext (_ dict : [String : Any], _ mod : NSManagedObjectContext) {
+    func updateTokenWithDictionary(_ dict : [String : Any]) {
         
-        let id = dict["id"]
-        var results = [Token]()
-        jsonIDs.append(id as! String)
-        
-        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id as! String)
+        let id = dict["id"] as! String
 
-        results = try! fetchRequest.execute()
-        
-        if results.count > 0 {
+        jsonIDs.append(id)
+
+        TFCoreDataProvider.shared.fetchTokensWithId(id) { (results) in
             
-            if let token = results.first {
+            if results.count > 0 {
                 
-                token.assignValuesToTokenFromDictionary(dict)
+                if let token = results.first {
+                    
+                    token.assignValuesToTokenFromDictionary(dict)
+                }
+                
+            } else {
+                
+                Token.newTokenFromDictionary(dict)
             }
-            
-        } else {
-            
-            Token.newTokenFromDictionaryInManagedObjectContext(dict, self.backgroundManagedObjectContext)
         }
     }
+
     
-    
-    
-    func deleteMissingTokensInManagedObjectContext(in mod : NSManagedObjectContext) {
+    func deleteMissingTokens() {
         
-        let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
-        
-        mod.perform {
-            
-            let tokens = try! fetchRequest.execute()
+        TFCoreDataProvider.shared.fetchAllTokens { (tokens) in
             
             if tokens.count > 0 {
                 
@@ -91,44 +72,20 @@ class TFUpdateManager {
                         
                         if !self.jsonIDs.contains(tokenId) {
                             
-                            token.deleteInManagedObjectContext(mod)
+                            token.delete()
                         }
                         
                     } else {
-                        token.deleteInManagedObjectContext(mod)
+                        
+                        token.delete()
                     }
                 }
-                self.save()
-            }
-        }
-    }
-    
-    
-    
-    func save() {
-        
-        do {
-            
-            try self.backgroundManagedObjectContext.save()
-            
-            self.managedObjectContext.perform {
                 
-                do {
-                    try self.managedObjectContext.save()
-                    
-                } catch {
-                    
-                    fatalError("Failure to save context: \(error)")
-                }
+//                TFCoreDataProvider.shared.save()
             }
-        } catch {
-            
-            fatalError("Failure to save context: \(error)")
         }
     }
-    
-    
-    
+
 }
 
 

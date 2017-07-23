@@ -34,23 +34,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFAddTokenViewController.swift"
-            timestampString = "522503718.569805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "TFAddTokenViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFAddTokenViewController.swift"
-            timestampString = "522503718.569805"
+            timestampString = "522510745.472208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -66,12 +50,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFAddTokenViewController.swift"
-            timestampString = "522503718.569805"
+            timestampString = "522510745.472208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "textFieldShouldBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TokenFolio/TFCoreDataProvider.swift"
+            timestampString = "522511192.180973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fetchAllTokens(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

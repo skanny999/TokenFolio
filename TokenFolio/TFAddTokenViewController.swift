@@ -37,9 +37,9 @@ class TFAddTokenViewController: UIViewController {
     
     func loadTokens() {
         
-        let coreDataProvider = TFCoreDataProvider()
-        
-        coreDataProvider.fetchAllTokens { (fetchedTokens) in
+        TFCoreDataProvider.shared.fetchAllTokens { (fetchedTokens) in
+            
+            print("Fetched tokens: %@", fetchedTokens)
             
             self.tokens = fetchedTokens
             self.configurePicker()
