@@ -42,6 +42,8 @@ public class Token: NSManagedObject {
     
     class func newTokenFromDictionary(_ dict : [String : Any]) {
         
+        
+        
         let token = TFCoreDataProvider.shared.newToken()
         
         token.assignValuesToTokenFromDictionary(dict)

@@ -13,7 +13,6 @@ class TFUpdateManager {
     
     var jsonIDs = [String]()
  
-    
     func parseJON (json: Data) {
         
         let json = try? JSONSerialization.jsonObject(with: json, options: [])
@@ -62,7 +61,7 @@ class TFUpdateManager {
     
     func deleteMissingTokens() {
         
-        TFCoreDataProvider.shared.fetchAllTokens { (tokens) in
+        TFCoreDataProvider.shared.fetchAllTokensBackground { (tokens) in
             
             if tokens.count > 0 {
                 

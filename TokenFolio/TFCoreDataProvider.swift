@@ -37,7 +37,7 @@ class TFCoreDataProvider {
     
     func fetchAllTokens(completion: @escaping ([Token]) -> ()) {
         
-        backgroundManagedObjectContext.perform {
+        managedObjectContext.perform {
             
             let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
         
@@ -50,9 +50,26 @@ class TFCoreDataProvider {
         }
     }
     
-    func fetchTokensWithId( _ id : String, completion: @escaping ([Token]) ->()) {
+    func fetchAllTokensBackground(completion: @escaping ([Token]) -> ()) {
         
         backgroundManagedObjectContext.perform {
+            
+            let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
+            
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+            
+            let results = try! fetchRequest.execute()
+            
+            completion (results)
+            
+        }
+    }
+    
+    
+    
+    func fetchTokensWithId( _ id : String, completion: @escaping ([Token]) ->()) {
+        
+        managedObjectContext.perform {
             
             let fetchRequest = NSFetchRequest<Token>(entityName: "Token")
             

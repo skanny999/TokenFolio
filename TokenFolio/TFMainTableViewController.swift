@@ -24,9 +24,9 @@ class TFMainTableViewController: UITableViewController {
     
     func configureFetchedResultsController() {
         
-        let provider = TFCoreDataProvider()
+//        let provider = TFCoreDataProvider()
         
-        self.fetchedResultsController = provider.selectedTokensFetchResultController()
+        self.fetchedResultsController = TFCoreDataProvider.shared.selectedTokensFetchResultController()
         self.fetchedResultsController.delegate = self
         
         do {

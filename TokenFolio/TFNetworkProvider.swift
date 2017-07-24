@@ -13,7 +13,7 @@ class TFNetworkProvider {
     
     func fetchJSON() {
         
-        let url = URL(string: "https://api.coinmarketcap.com/v1/ticker/?limit=5")!
+        let url = URL(string: "https://api.coinmarketcap.com/v1/ticker/?limit=10")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
