@@ -31,7 +31,7 @@ class TFCoreDataProvider {
     
     func newToken() -> Token {
         
-        return NSEntityDescription.insertNewObject(forEntityName: "Token", into: backgroundManagedObjectContext) as! Token
+        return NSEntityDescription.insertNewObject(forEntityName: "Token", into: managedObjectContext) as! Token
 
     }
     

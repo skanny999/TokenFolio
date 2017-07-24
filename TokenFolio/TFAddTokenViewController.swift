@@ -20,7 +20,7 @@ class TFAddTokenViewController: UIViewController {
     var picker = UIPickerView()
     
     var tokens = [Token]()
-    var token = Token()
+    var token : Token?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ class TFAddTokenViewController: UIViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        if !tokens.contains(token) {
+        if !tokens.contains(token!) {
             
             showAlertWithText("Please select token")
             
@@ -75,9 +75,9 @@ class TFAddTokenViewController: UIViewController {
             
         } else {
             
-            token.isSelected = true
-            token.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
-            Value.setTotalValueForToken(token)
+            token?.isSelected = true
+            token?.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
+            Value.setTotalValueForToken(token!)
             
             dismiss(animated: true, completion: nil)
 
@@ -138,13 +138,13 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
         
 //        quantityTextField.isEnabled = true
         token = tokens[row]
-        updateLabelsForToken(token)
+        updateLabelsForToken(token!)
     }
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        if !tokens.contains(token) {
+        if !tokens.contains(token!) {
             
             showAlertWithText("Please select a token before adding a quantity")
             

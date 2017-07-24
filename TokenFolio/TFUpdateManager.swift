@@ -28,10 +28,10 @@ class TFUpdateManager {
                 
                 self.deleteMissingTokens()
 
-                TFCoreDataProvider.shared.save()
-                
             }
         }
+        
+        TFCoreDataProvider.shared.save()
     }
     
     
@@ -55,6 +55,8 @@ class TFUpdateManager {
                 
                 Token.newTokenFromDictionary(dict)
             }
+            
+
         }
     }
 
@@ -80,9 +82,10 @@ class TFUpdateManager {
                     }
                 }
                 
-                TFCoreDataProvider.shared.save()
+                
             }
         }
+
     }
 
 }

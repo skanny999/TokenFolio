@@ -34,12 +34,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFAddTokenViewController.swift"
-            timestampString = "522510745.472208"
+            timestampString = "522348723.293698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "addButtonTapped(_:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "selectTokenLabelTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -50,28 +50,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFAddTokenViewController.swift"
-            timestampString = "522510745.472208"
+            timestampString = "522348078.124337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TokenFolio/TFCoreDataProvider.swift"
-            timestampString = "522511192.180973"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "fetchAllTokens(completion:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "addButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -82,12 +66,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TokenFolio/TFUpdateManager.swift"
-            timestampString = "522575095.057487"
+            timestampString = "522605982.364146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "updateTokenWithDictionary(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TokenFolio/Token+CoreDataClass.swift"
+            timestampString = "522606039.234012"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "newTokenFromDictionary(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TokenFolio/Token+CoreDataClass.swift"
+            timestampString = "522606065.875976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "newTokenFromDictionary(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
