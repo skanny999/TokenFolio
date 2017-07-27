@@ -65,7 +65,7 @@ class TFAddTokenViewController: UIViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        if !tokens.contains(token!) {
+        if token == nil {
             
             showAlertWithText("Please select token")
             
@@ -144,16 +144,17 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        if !tokens.contains(token!) {
-            
-            showAlertWithText("Please select a token before adding a quantity")
-            
-            return false
-            
-        } else {
+        if token != nil {
             
             return true
         }
+        else {
+
+            showAlertWithText("Please select a token before adding a quantity")
+            
+            return false
+        }
+
     }
     
     

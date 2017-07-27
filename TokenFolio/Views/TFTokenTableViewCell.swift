@@ -44,7 +44,7 @@ class TFTokenTableViewCell: UITableViewCell {
         variationTimeLabel.text = "24h"
         
         priceLabel.text = Value.formattedTokenPrice(token)
-        totalValueLabel.text = Value.formattedTotalValue(token)
+        totalValueLabel.text = Value.formattedTokenValue(token)
 
     }
     

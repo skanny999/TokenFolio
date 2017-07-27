@@ -11,6 +11,10 @@ import CoreData
 
 class TFMainTableViewController: UITableViewController {
     
+    
+    @IBOutlet weak var portfolioValueLabel: UILabel!
+    
+    
     var fetchedResultsController: NSFetchedResultsController<Token>!
     
     
@@ -18,13 +22,19 @@ class TFMainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         configureFetchedResultsController()
+        updatePortfolioLabel()
+//        navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "CaviarDreams", size: 20)!]
         
+        let titleAttributes = [
+            NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
+        ]
         
+        navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        tableView.tableFooterView = UIView()
+ 
     }
     
     func configureFetchedResultsController() {
-        
-//        let provider = TFCoreDataProvider()
         
         self.fetchedResultsController = TFCoreDataProvider.shared.selectedTokensFetchResultController()
         self.fetchedResultsController.delegate = self
@@ -38,6 +48,28 @@ class TFMainTableViewController: UITableViewController {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
 
+    }
+    
+    func updatePortfolioLabel() {
+        
+        var totalValue = Double()
+        
+        TFCoreDataProvider.shared.fetchSelectedTokens { (tokens) in
+            
+            if tokens.count == 0 {
+                
+                totalValue = 0
+            }
+            else {
+                
+                for token in tokens {
+                    
+                    totalValue += Value.tokenTotalValue(token)
+                }
+            }
+            
+            self.portfolioValueLabel.text = Value.formattedValue(totalValue)
+        }
     }
 
 
@@ -66,6 +98,21 @@ class TFMainTableViewController: UITableViewController {
         return 0
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+
+            let token = self.fetchedResultsController.object(at: indexPath)
+            token.quantity = NSNumber(integerLiteral: 0)
+            token.isSelected = false
+
+        }
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TOKEN_CELL", for: indexPath) as! TFTokenTableViewCell
@@ -78,7 +125,7 @@ class TFMainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 80.0
+        return 90.0
     }
     
 
@@ -109,6 +156,8 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        
+        updatePortfolioLabel()
     }
     
     

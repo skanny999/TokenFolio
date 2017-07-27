@@ -28,8 +28,7 @@ struct Value {
 
         switch TFUserSettings.currentCurrency()! {
         case .Usd:
-            let price = (token.priceUsd?.doubleValue)!
-            token.totalValueUsd = NSNumber(value: quantity * price)
+            token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
         case .Eur:
           token.totalValueUsd = NSNumber(value: quantity * (token.priceEur?.doubleValue)!)
         case .Gbp:
@@ -37,6 +36,7 @@ struct Value {
         default:
             token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
         }
+    
         
         
     }
@@ -55,15 +55,21 @@ struct Value {
         default:
             price = token.priceUsd!.doubleValue
         }
-        
-        let formattedNumber = String(format: "%.2f", locale: Locale.current, Double(price))
 
-        return String(format: "%@%@", currencySymbol(token), formattedNumber)
+        return formattedValue(price)
 
     }
 
     
-    static func formattedTotalValue(_ token : Token) -> String {
+    static func formattedTokenValue(_ token : Token) -> String {
+        
+        let value = tokenTotalValue(token)
+        
+        return formattedValue(value)
+        
+    }
+    
+    static func tokenTotalValue(_ token : Token) -> Double {
         
         let value : Double
         
@@ -78,14 +84,22 @@ struct Value {
             value = token.totalValueUsd!.doubleValue
         }
         
-        let formattedNumber = String(format: "%.2f", locale: Locale.current, Double(value))
+        return value
         
-        return String(format: "%@ %@", currencySymbol(token), formattedNumber)
-
     }
     
     
-    static func currencySymbol(_ token: Token) -> String {
+    
+    static func formattedValue(_ value : Double) -> String {
+        
+        let formattedNumber = String(format: "%.2f", locale: Locale.current, value)
+        
+        return String(format: "%@ %@", currencySymbol(), formattedNumber)
+        
+    }
+    
+    
+    static func currencySymbol() -> String {
         
         switch TFUserSettings.currentCurrency()! {
         case .Usd:

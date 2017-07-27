@@ -2,7 +2,7 @@
 //  Token+CoreDataProperties.swift
 //  TokenFolio
 //
-//  Created by Riccardo Scanavacca on 21/07/2017.
+//  Created by Riccardo Scanavacca on 26/07/2017.
 //  Copyright © 2017 Riccardo Scanavacca. All rights reserved.
 //
 

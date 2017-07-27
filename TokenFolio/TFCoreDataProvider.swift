@@ -75,12 +75,25 @@ class TFCoreDataProvider {
             
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             
-            let results = try! fetchRequest.execute()
+            let tokens = try! fetchRequest.execute()
             
-            completion (results)
+            completion (tokens)
             
         }
     }
+    
+    func fetchSelectedTokens(completion: @escaping([Token]) -> ()) {
+        
+        managedObjectContext.perform {
+            
+            let fetchRequest = self.selectedTokenFetchRequest()
+            
+            let tokens = try! fetchRequest.execute()
+            
+            completion(tokens)
+        }
+    }
+    
     
     func tokensFetchRequest() -> NSFetchRequest<Token> {
         
@@ -90,6 +103,16 @@ class TFCoreDataProvider {
     
     
     func selectedTokensFetchResultController() -> NSFetchedResultsController<Token> {
+
+        return NSFetchedResultsController<Token>(fetchRequest: selectedTokenFetchRequest(),
+                                                 managedObjectContext: managedObjectContext,
+                                                 sectionNameKeyPath: nil,
+                                                 cacheName: nil)
+
+    }
+    
+    
+    func selectedTokenFetchRequest() -> NSFetchRequest<Token> {
         
         let request = NSFetchRequest<Token>(entityName: "Token")
         let predicate = NSPredicate(format: "isSelected == 1");
@@ -97,11 +120,8 @@ class TFCoreDataProvider {
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
         
-        return NSFetchedResultsController<Token>(fetchRequest: request,
-                                                 managedObjectContext: managedObjectContext,
-                                                 sectionNameKeyPath: nil,
-                                                 cacheName: nil)
-
+        return request
+        
     }
     
     
