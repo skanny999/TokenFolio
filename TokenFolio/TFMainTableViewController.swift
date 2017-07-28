@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import DZNEmptyDataSet
 
 class TFMainTableViewController: UITableViewController {
     
@@ -16,6 +17,7 @@ class TFMainTableViewController: UITableViewController {
     
     
     var fetchedResultsController: NSFetchedResultsController<Token>!
+    var refreshController : UIRefreshControl!
     
     
     override func viewDidLoad() {
@@ -23,32 +25,71 @@ class TFMainTableViewController: UITableViewController {
         
         configureFetchedResultsController()
         updatePortfolioLabel()
-//        navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "CaviarDreams", size: 20)!]
+        configureRefreshController()
+        configureTitle()
+        configureEmptyDataSet()
+
+    }
+    
+    
+    func configureTitle() {
         
         let titleAttributes = [
             NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
         ]
         
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        tableView.tableFooterView = UIView()
- 
+        
     }
+    
+    
+    
+    func configureRefreshController() {
+        
+        refreshController = UIRefreshControl()
+        refreshController.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshController.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        tableView.refreshControl = refreshController
+
+    }
+    
+
+    
     
     func configureFetchedResultsController() {
         
-        self.fetchedResultsController = TFCoreDataProvider.shared.selectedTokensFetchResultController()
-        self.fetchedResultsController.delegate = self
+        fetchedResultsController = TFCoreDataProvider.shared.selectedTokensFetchResultController()
+        fetchedResultsController.delegate = self
+        
+        performFetch()
+
+    }
+    
+    func refresh() {
+        
+        performFetch()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            
+            self.refreshController?.endRefreshing()
+        })
+
+        
+    }
+    
+    
+    func performFetch() {
         
         do {
             try fetchedResultsController.performFetch()
-
-            
-        } catch {
+        }
+        catch {
             
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
-
     }
+    
+    
     
     func updatePortfolioLabel() {
         
@@ -157,12 +198,10 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
         
+        refreshController?.endRefreshing()
         updatePortfolioLabel()
     }
-    
-    
-    
-    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -172,6 +211,46 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
         }
         
     }
-    
+}
 
+extension TFMainTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func configureEmptyDataSet() {
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome to TokenFolio"
+        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Tap the Plus button to add your first Token!"
+        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "taylor-swift")
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+        let str = "+"
+        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 60, weight: UIFontWeightLight)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+
+        performSegue(withIdentifier: "ADD_SEGUE", sender: nil)
+        
+    }
+    
+    
+    
 }

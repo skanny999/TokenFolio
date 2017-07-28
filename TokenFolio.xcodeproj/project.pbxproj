@@ -29,6 +29,7 @@
 		8B8ABFA91EFC08CF00DD0AC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8ABFA71EFC08CF00DD0AC5 /* LaunchScreen.storyboard */; };
 		8B8ABFB41EFC08CF00DD0AC5 /* TokenFolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABFB31EFC08CF00DD0AC5 /* TokenFolioTests.swift */; };
 		8B8ABFBF1EFC08CF00DD0AC5 /* TokenFolioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8ABFBE1EFC08CF00DD0AC5 /* TokenFolioUITests.swift */; };
+		A8A971C51F2B978800497B75 /* TFSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A971C41F2B978800497B75 /* TFSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 /* Begin PBXFileReference section */
 		6A992458C825F8C22EDB780F /* Pods_TokenFolio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokenFolio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DC0941F210D7F00CA3AEF /* TFFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFFormatter.swift; sourceTree = "<group>"; };
-		8B412BB71EFC754300BB3850 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		8B412BB71EFC754300BB3850 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8B412BBC1EFC7B4800BB3850 /* TFMainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFMainTableViewController.swift; sourceTree = "<group>"; };
 		8B5814531EFED0CE0065C3A4 /* Token+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B5814541EFED0CE0065C3A4 /* Token+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		8B8ABFBE1EFC08CF00DD0AC5 /* TokenFolioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFolioUITests.swift; sourceTree = "<group>"; };
 		8B8ABFC01EFC08CF00DD0AC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A25EA332053B079C8D92F42E /* Pods-TokenFolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokenFolio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio.debug.xcconfig"; sourceTree = "<group>"; };
+		A8A971C41F2B978800497B75 /* TFSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFSettingsViewController.swift; sourceTree = "<group>"; };
 		E0CAD6F7C79137C7877FB30F /* Pods-TokenFolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokenFolio.release.xcconfig"; path = "Pods/Target Support Files/Pods-TokenFolio/Pods-TokenFolio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 			children = (
 				8B412BBC1EFC7B4800BB3850 /* TFMainTableViewController.swift */,
 				8B63741D1F1A69C900B44AF8 /* TFAddTokenViewController.swift */,
+				A8A971C41F2B978800497B75 /* TFSettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -380,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B9A61C35253DDC42C62373CE /* [CP] Embed Pods Frameworks */ = {
@@ -423,6 +426,7 @@
 				8B8ABFA41EFC08CF00DD0AC5 /* TokenFolio.xcdatamodeld in Sources */,
 				8B58145B1EFED9620065C3A4 /* TFUpdateManager.swift in Sources */,
 				8B5814551EFED0CE0065C3A4 /* Token+CoreDataClass.swift in Sources */,
+				A8A971C51F2B978800497B75 /* TFSettingsViewController.swift in Sources */,
 				8B63741C1F127F0500B44AF8 /* TFCoreDataProvider.swift in Sources */,
 				8B6374211F1A7F0600B44AF8 /* User+CoreDataClass.swift in Sources */,
 				8B5814591EFED4990065C3A4 /* TFNetworkProvider.swift in Sources */,

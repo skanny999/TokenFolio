@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.5.0)
+  - DZNEmptyDataSet (1.8.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
+  - DZNEmptyDataSet
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 9cdd40e64c5322040370e9ff66c30fa4271e8b0e
+PODFILE CHECKSUM: ee3b9a9d5a9f31726dffd34a709e0b2926184f8e
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

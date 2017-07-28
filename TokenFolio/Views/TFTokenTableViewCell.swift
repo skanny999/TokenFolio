@@ -24,7 +24,7 @@ class TFTokenTableViewCell: UITableViewCell {
         
         symbolLabel.text = token.symbol
         nameLabel.text = token.name
-        quantityLabel.text = "Qty: \((token.quantity?.intValue)!)"
+        quantityLabel.text = "Qty: \((token.quantity?.doubleValue)!)"
         
         if let percentChange = Double(token.percentChange24h!) {
             

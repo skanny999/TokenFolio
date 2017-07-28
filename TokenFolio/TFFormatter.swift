@@ -34,8 +34,15 @@ class TFFormatter {
 extension String  {
     
     var isNumber : Bool {
-        get{
-            return !self.isEmpty && self.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+        
+        if Double(self) == nil {
+            
+            return false
         }
+        else {
+            
+            return true
+        }
+        
     }
 }

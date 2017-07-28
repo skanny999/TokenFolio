@@ -5,4 +5,6 @@ use_frameworks!
 target 'TokenFolio' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'DZNEmptyDataSet'
+    
 end

@@ -76,7 +76,7 @@ class TFAddTokenViewController: UIViewController {
         } else {
             
             token?.isSelected = true
-            token?.quantity =  NSNumber(value:Int32(quantityTextField.text!)!)
+            token?.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
             Value.setTotalValueForToken(token!)
             
             dismiss(animated: true, completion: nil)
@@ -96,9 +96,12 @@ class TFAddTokenViewController: UIViewController {
         
         dismissKeyboard()
         showPicker()
-
+        
+        if token == nil {
+            token = tokens[0]
+            updateLabelsForToken(token!)
+        }
     }
-
 }
 
 
