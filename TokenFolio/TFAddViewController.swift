@@ -1,18 +1,16 @@
 //
-//  TFAddTokenViewController.swift
+//  TFAddViewController.swift
 //  TokenFolio
 //
-//  Created by Riccardo Scanavacca on 15/07/2017.
+//  Created by Riccardo Scanavacca on 29/07/2017.
 //  Copyright © 2017 Riccardo Scanavacca. All rights reserved.
 //
 
 import UIKit
 
+class TFAddViewController: TFTableViewController {
 
-class TFAddTokenViewController: UIViewController {
-
-
-
+    
     @IBOutlet weak var selectTokenLabel: UILabel!
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var quantityTextField: UITextField!
@@ -21,18 +19,17 @@ class TFAddTokenViewController: UIViewController {
     
     var tokens = [Token]()
     var token : Token?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadTokens()
-        configureGestureRecogniser()
         selectTokenLabel.text = "Select Token"
         quantityTextField.delegate = self
-
+        
     }
     
-
+    
     
     func loadTokens() {
         
@@ -42,16 +39,10 @@ class TFAddTokenViewController: UIViewController {
             
             self.tokens = fetchedTokens
             self.configurePicker()
-
+            
         }
     }
     
-    
-    func configureGestureRecogniser() {
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TFAddTokenViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
     
     
     func updateLabelsForToken (_ token : Token) {
@@ -77,44 +68,58 @@ class TFAddTokenViewController: UIViewController {
             token?.isSelected = true
             token?.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
             Value.setTotalValueForToken(token!)
-            
+            hidePicker()
             dismiss(animated: true, completion: nil)
-
+            
         }
     }
-
+    
     
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
         
+        hidePicker()
         dismiss(animated: true, completion: nil)
     }
     
-
-    @IBAction func selectTokenLabelTapped(_ sender: Any) {
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        dismissKeyboard()
-        showPicker()
-        
-        if token == nil {
-            token = tokens[0]
-            updateLabelsForToken(token!)
+        if indexPath.section == 0 && indexPath.row == 0 {
+            
+            dismissKeyboard()
+            showPicker()
+            
+            if token == nil {
+                token = tokens[0]
+                updateLabelsForToken(token!)
+            }
+        } else {
+            
+            hidePicker()
         }
+        
     }
+    
 }
 
 
 
-extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     func configurePicker() {
         
+        let window = UIApplication.shared.keyWindow!
         picker = UIPickerView(frame: CGRect(x: 0,
-                                            y: self.view.bounds.size.height,
-                                            width: self.view.bounds.width,
-                                            height: 224))
-        view.addSubview(picker)
+                                            y: window.bounds.size.height,
+                                            width: window.bounds.width,
+                                            height: 150))
 
+        picker.layer.borderColor = UIColor.black.cgColor
+        picker.layer.borderWidth = 1
+        window.addSubview(picker)
         picker.delegate = self
         picker.dataSource = self
     }
@@ -138,7 +143,6 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-//        quantityTextField.isEnabled = true
         token = tokens[row]
         updateLabelsForToken(token!)
     }
@@ -151,20 +155,26 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
             return true
         }
         else {
-
+            
             showAlertWithText("Please select a token before adding a quantity")
             
             return false
         }
-
+        
     }
     
     
     
     func showPicker() {
         UIView.animate(withDuration: 0.3, animations: {
+            
+            let indexPath = NSIndexPath(row: 0, section: 1)
+            
+            self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.middle, animated: true)
+            
+            let window = UIApplication.shared.keyWindow!
             self.picker.frame = CGRect(x: 0,
-                                       y: self.view.bounds.size.height - self.picker.bounds.size.height,
+                                       y: window.bounds.size.height - self.picker.bounds.size.height,
                                        width: self.picker.bounds.size.width,
                                        height: self.picker.bounds.size.height)
             
@@ -173,12 +183,13 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     
     func hidePicker() {
-
+        
         UIView.animate(withDuration: 0.3, animations: {
+            let window = UIApplication.shared.keyWindow!
             self.picker.frame = CGRect(x: 0,
-                                       y: self.view.bounds.size.height,
+                                       y: window.bounds.size.height,
                                        width: self.picker.bounds.size.width,
-                                       height: 224)
+                                       height: 150)
         })
     }
     
@@ -199,8 +210,34 @@ extension TFAddTokenViewController: UIPickerViewDelegate, UIPickerViewDataSource
         
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        let token = tokens[row]
+        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium),NSForegroundColorAttributeName:UIColor.black])
+        pickerLabel.attributedText = myTitle
+        pickerLabel.textAlignment = .center
+        pickerLabel.backgroundColor = UIColor.white
+        pickerView.backgroundColor = UIColor.white
+        return pickerLabel
+    }
     
-    
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -12,16 +12,10 @@ class TFNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let titleAttributes = [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
-        ]
-        
-        navigationBar.titleTextAttributes = titleAttributes
-        
-        navigationBar.tintColor = UIColor.black
-        
+
         setBottomBorderColor()
+        setTitleTextAttributes()
+        setButtonTextAttributes()
         
     }
     
@@ -32,21 +26,22 @@ class TFNavigationController: UINavigationController {
         bottomBorderView.backgroundColor = UIColor.black
         navigationBar.addSubview(bottomBorderView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setTitleTextAttributes() {
+        
+        let titleAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)]
+        navigationBar.titleTextAttributes = titleAttributes
+        navigationBar.tintColor = UIColor.black
+        
     }
-    */
+
+    func setButtonTextAttributes() {
+        
+        let customFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], for: .normal)
+        
+    }
+
+
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TFSettingsViewController: UITableViewController {
+class TFSettingsViewController: TFTableViewController {
     
     @IBOutlet weak var currencyController: UISegmentedControl!
     
