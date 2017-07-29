@@ -7,28 +7,7 @@
 //
 
 import Foundation
-
-class TFFormatter {
-
-    class func currencyFromNumber(_ number: NSNumber) -> String {
-        
-        let symbol : String
-        
-        switch TFUserSettings.currentCurrency()!{
-        case .Usd:
-            symbol = "$"
-        case .Eur:
-            symbol = "€"
-        case .Gbp:
-            symbol = "£"
-        default:
-            symbol = "$"
-        }
-        
-        return String(format: "%@ %.2f", symbol, number.doubleValue)
-        
-    }
-}
+import UIKit
 
 
 extension String  {
@@ -43,6 +22,55 @@ extension String  {
             
             return true
         }
-        
     }
 }
+
+extension UIView {
+    func fadeIn(_ duration: TimeInterval = 0.2, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+        }, completion: completion)  }
+    
+    func fadeOut(_ duration: TimeInterval = 0.2, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.alpha = 0.0
+        }, completion: completion)
+    }
+}
+
+
+extension UILabel {
+    
+    func updateWithText(_ text: String) {
+    
+        self.fadeOut()
+        self.text = text
+        self.fadeIn()
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

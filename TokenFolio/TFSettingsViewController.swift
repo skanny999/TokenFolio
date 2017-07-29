@@ -19,7 +19,9 @@ class TFSettingsViewController: UITableViewController {
         super.viewDidLoad()
 
         configureSegmentedControllers()
-        configureTitle()
+//        configureTitle()
+        
+        tableView.backgroundView = UIImageView(image: UIImage(named: "Backgound.png"))
         
     }
 
@@ -31,6 +33,11 @@ class TFSettingsViewController: UITableViewController {
         changeController.setTitleTextAttributes([NSFontAttributeName: font], for: [])
     }
 
+    @IBAction func setButtonTapped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
         
     func configureTitle() {
             

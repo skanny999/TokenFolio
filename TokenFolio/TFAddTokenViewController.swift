@@ -29,7 +29,6 @@ class TFAddTokenViewController: UIViewController {
         configureGestureRecogniser()
         selectTokenLabel.text = "Select Token"
         quantityTextField.delegate = self
-//        quantityTextField.isEnabled = false
 
     }
     
@@ -57,9 +56,9 @@ class TFAddTokenViewController: UIViewController {
     
     func updateLabelsForToken (_ token : Token) {
         
-        selectTokenLabel.text = token.name
+        selectTokenLabel.updateWithText(token.name!)
         quantityTextField.text = token.quantity?.stringValue
-        currentPriceLabel.text = Value.formattedTokenPrice(token)
+        currentPriceLabel.updateWithText(Value.formattedTokenPrice(token))
     }
     
     

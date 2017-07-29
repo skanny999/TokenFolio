@@ -26,7 +26,7 @@ class TFMainTableViewController: UITableViewController {
         configureFetchedResultsController()
         updatePortfolioLabel()
         configureRefreshController()
-        configureTitle()
+//        configureTitle()
         configureEmptyDataSet()
 
     }
@@ -37,7 +37,6 @@ class TFMainTableViewController: UITableViewController {
         let titleAttributes = [
             NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
         ]
-        
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
     }

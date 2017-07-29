@@ -31,12 +31,12 @@ class TFTokenTableViewCell: UITableViewCell {
             if percentChange > 0.0 {
                 
                 variationLabel.textColor = UIColor(red: 91/255, green: 211/255, blue: 0/255, alpha: 1.0)
-                variationLabel.text = String(format: "+%@", token.percentChange24h!)
+                variationLabel.text = String(format: "+%@%%", token.percentChange24h!)
                 
             } else {
                 
                 variationLabel.textColor = UIColor(red: 233/255, green: 42/255, blue: 0/255, alpha: 1.0)
-                variationLabel.text = String(format: "%@", token.percentChange24h!)
+                variationLabel.text = String(format: "%@ %%", token.percentChange24h!)
             }
 
         }
