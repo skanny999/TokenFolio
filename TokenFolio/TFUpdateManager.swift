@@ -56,6 +56,12 @@ class TFUpdateManager {
                 if let token = results.first {
                     
                     token.assignValuesToTokenFromDictionary(dict)
+                    
+                    if token.isSelected == true {
+                        
+                        print(token)
+                    }
+                    
                 }
                 
             } else {
@@ -88,13 +94,10 @@ class TFUpdateManager {
                         token.delete()
                     }
                 }
-                
-                
             }
         }
-
     }
-
+    
 }
 
 

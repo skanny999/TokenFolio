@@ -56,13 +56,13 @@ public class Token: NSManagedObject {
         
         switch TFUserSettings.currentCurrency()! {
         case .Usd:
-            self.totalValueUsd = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
+            self.totalValue = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
         case .Eur:
-            self.totalValueUsd = NSNumber(value: quantity * (self.priceEur?.doubleValue)!)
+            self.totalValue = NSNumber(value: quantity * (self.priceEur?.doubleValue)!)
         case .Gbp:
-            self.totalValueUsd = NSNumber(value: quantity * (self.priceGbp?.doubleValue)!)
+            self.totalValue = NSNumber(value: quantity * (self.priceGbp?.doubleValue)!)
         default:
-            self.totalValueUsd = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
+            self.totalValue = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
         }
     
     }
@@ -197,7 +197,7 @@ public class Token: NSManagedObject {
             self.setTotalValue()
             
         }
-        print(self)
+
     }
     
     

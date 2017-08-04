@@ -63,28 +63,28 @@ struct Value {
     
     static func formattedTokenValue(_ token : Token) -> String {
         
-        let value = tokenTotalValue(token)
+//        let value = tokenTotalValue(token)
         
-        return formattedValue(value)
+        return formattedValue(token.totalValue!.doubleValue)
         
     }
     
     static func tokenTotalValue(_ token : Token) -> Double {
         
-        let value : Double
+//        let value : Double
+//        
+//        switch TFUserSettings.currentCurrency()! {
+//        case .Usd:
+//            value = token.totalValueUsd!.doubleValue
+//        case .Eur:
+//            value = token.totalValueEur!.doubleValue
+//        case .Gbp:
+//            value = token.totalValueGbp!.doubleValue
+//        default:
+//            value = token.totalValueUsd!.doubleValue
+//        }
         
-        switch TFUserSettings.currentCurrency()! {
-        case .Usd:
-            value = token.totalValueUsd!.doubleValue
-        case .Eur:
-            value = token.totalValueEur!.doubleValue
-        case .Gbp:
-            value = token.totalValueGbp!.doubleValue
-        default:
-            value = token.totalValueUsd!.doubleValue
-        }
-        
-        return value
+        return token.totalValue!.doubleValue
         
     }
     

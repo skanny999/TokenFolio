@@ -35,8 +35,6 @@ class TFAddViewController: TFTableViewController {
         
         TFCoreDataProvider.shared.fetchAllTokens { (fetchedTokens) in
             
-            print("Fetched tokens: %@", fetchedTokens)
-            
             self.tokens = fetchedTokens
             self.configurePicker()
             
@@ -68,6 +66,9 @@ class TFAddViewController: TFTableViewController {
             token!.isSelected = true
             token!.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
             token!.setTotalValue()
+            
+            print(token!)
+            
             TFCoreDataProvider.shared.save()
             
             hidePicker()
