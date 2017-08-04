@@ -11,9 +11,11 @@ import CoreData
 
 class TFNetworkProvider {
     
-    func fetchJSON() {
+    static func fetchJSON() {
         
-        let url = URL(string: "https://api.coinmarketcap.com/v1/ticker/?limit=8")!
+        let urlString = String(format:"https://api.coinmarketcap.com/v1/ticker/?convert=\(Value.currencyCode())&limit=100")
+        
+        let url = URL(string: urlString)!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -36,6 +38,10 @@ class TFNetworkProvider {
         
         task.resume()
     }
+
+    
+    
+    
 }
 
 

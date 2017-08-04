@@ -50,7 +50,22 @@ public class Token: NSManagedObject {
   
     }
     
+     func setTotalValue() {
+        
+        let quantity = (self.quantity?.doubleValue)!
+        
+        switch TFUserSettings.currentCurrency()! {
+        case .Usd:
+            self.totalValueUsd = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
+        case .Eur:
+            self.totalValueUsd = NSNumber(value: quantity * (self.priceEur?.doubleValue)!)
+        case .Gbp:
+            self.totalValueUsd = NSNumber(value: quantity * (self.priceGbp?.doubleValue)!)
+        default:
+            self.totalValueUsd = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
+        }
     
+    }
     
     func assignValuesToTokenFromDictionary(_ dict : [String : Any]) {
         
@@ -179,7 +194,7 @@ public class Token: NSManagedObject {
         
         if (quantity?.intValue)! > 0 {
             
-            Value.setTotalValueForToken(self)
+            self.setTotalValue()
             
         }
         print(self)

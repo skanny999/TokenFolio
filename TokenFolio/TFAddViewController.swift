@@ -65,9 +65,11 @@ class TFAddViewController: TFTableViewController {
             
         } else {
             
-            token?.isSelected = true
-            token?.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
-            Value.setTotalValueForToken(token!)
+            token!.isSelected = true
+            token!.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
+            token!.setTotalValue()
+            TFCoreDataProvider.shared.save()
+            
             hidePicker()
             dismiss(animated: true, completion: nil)
             

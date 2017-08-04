@@ -127,6 +127,7 @@
 		8B412BB91EFC78DF00BB3850 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8BA536211F2CFC700007931D /* TFTableViewController.swift */,
 				8B412BBC1EFC7B4800BB3850 /* TFMainTableViewController.swift */,
 				8B63741D1F1A69C900B44AF8 /* TFAddTokensViewController.swift */,
 				8BA536251F2D06910007931D /* TFAddViewController.swift */,
@@ -171,7 +172,6 @@
 			children = (
 				8B6374231F1A92D800B44AF8 /* TFTokenTableViewCell.swift */,
 				8BA5361F1F2CBC6C0007931D /* TFNavigationController.swift */,
-				8BA536211F2CFC700007931D /* TFTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

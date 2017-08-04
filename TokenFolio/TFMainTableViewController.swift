@@ -26,7 +26,6 @@ class TFMainTableViewController: UITableViewController {
         configureFetchedResultsController()
         updatePortfolioLabel()
         configureRefreshController()
-//        configureTitle()
         configureEmptyDataSet()
         tableView.backgroundView = UIImageView(image: UIImage(named: "Backgound.png"))
     }
@@ -66,7 +65,7 @@ class TFMainTableViewController: UITableViewController {
     
     func refresh() {
         
-        performFetch()
+        TFUpdateManager.updateTokens()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             

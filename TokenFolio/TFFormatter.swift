@@ -14,14 +14,7 @@ extension String  {
     
     var isNumber : Bool {
         
-        if Double(self) == nil {
-            
-            return false
-        }
-        else {
-            
-            return true
-        }
+        return Double(self) == nil ? false : true
     }
 }
 

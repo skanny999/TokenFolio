@@ -11,6 +11,13 @@ import CoreData
 
 class TFUpdateManager {
     
+    static func updateTokens() {
+        
+        TFNetworkProvider.fetchJSON()
+        
+    }
+    
+    
     var jsonIDs = [String]()
  
     func parseJON (json: Data) {

@@ -11,10 +11,10 @@ import UIKit
 
 enum Currency : String {
     
-    case Btc = "btc"
-    case Usd = "usd"
-    case Eur = "eur"
-    case Gbp = "gbp"
+    case Btc = "BTC"
+    case Usd = "$"
+    case Eur = "€"
+    case Gbp = "£"
     
 }
 
@@ -22,24 +22,24 @@ enum Currency : String {
 
 struct Value {
     
-    static func setTotalValueForToken(_ token: Token) {
-        
-        let quantity = (token.quantity?.doubleValue)!
-
-        switch TFUserSettings.currentCurrency()! {
-        case .Usd:
-            token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
-        case .Eur:
-          token.totalValueUsd = NSNumber(value: quantity * (token.priceEur?.doubleValue)!)
-        case .Gbp:
-            token.totalValueUsd = NSNumber(value: quantity * (token.priceGbp?.doubleValue)!)
-        default:
-            token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
-        }
+//    static func setTotalValueForToken(_ token: Token) {
+//        
+//        let quantity = (token.quantity?.doubleValue)!
+//
+//        switch TFUserSettings.currentCurrency()! {
+//        case .Usd:
+//            token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
+//        case .Eur:
+//          token.totalValueUsd = NSNumber(value: quantity * (token.priceEur?.doubleValue)!)
+//        case .Gbp:
+//            token.totalValueUsd = NSNumber(value: quantity * (token.priceGbp?.doubleValue)!)
+//        default:
+//            token.totalValueUsd = NSNumber(value: quantity * (token.priceUsd?.doubleValue)!)
+//        }
     
         
         
-    }
+    
     
     static func formattedTokenPrice(_ token:Token) -> String {
     
@@ -94,22 +94,22 @@ struct Value {
         
         let formattedNumber = String(format: "%.2f", locale: Locale.current, value)
         
-        return String(format: "%@ %@", currencySymbol(), formattedNumber)
+        return String(format: "%@ %@", TFUserSettings.currentCurrency()!.rawValue, formattedNumber)
         
     }
     
     
-    static func currencySymbol() -> String {
-        
+    static func currencyCode() -> String {
+
         switch TFUserSettings.currentCurrency()! {
         case .Usd:
-            return "$"
+            return "USD"
         case .Eur:
-            return "€"
+            return "EUR"
         case .Gbp:
-            return "£"
+            return "GBP"
         default:
-            return "$"
+            return "USD"
         }
     }
 

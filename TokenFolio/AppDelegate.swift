@@ -17,8 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        createUser()
-        updateTokens()
+        TFUpdateManager.updateTokens()
 
         return true
     }
@@ -93,34 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
-    func createUser() {
-        
-        let managedObjectContext = self.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        
-        managedObjectContext.perform {
-            
-            let results = try! fetchRequest.execute()
-            
-            if results.count == 0 {
-                
-                User.newUserInManagedObjectContext(managedObjectContext)
-            }
-            
-        }
-    }
-    
-    
-    
-    func updateTokens() {
-        
-        let servicesProvider = TFNetworkProvider()
-        
-        servicesProvider.fetchJSON()
-        
-    }
+
     
     
 
