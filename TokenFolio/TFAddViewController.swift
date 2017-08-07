@@ -216,7 +216,7 @@ extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         let token = tokens[row]
-        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium),NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 22, weight: UIFontWeightRegular),NSForegroundColorAttributeName:UIColor.black])
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .center
         pickerLabel.backgroundColor = UIColor.white
