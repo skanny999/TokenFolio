@@ -35,7 +35,7 @@ class TFSettingsViewController: TFTableViewController {
 
     @IBAction func setButtonTapped(_ sender: Any) {
         
-        if (initialInvestmentTextField.text?.isNumber)! {
+        if (initialInvestmentTextField.text?.isValidNumber)! {
             
             TFUserSettings.setInitialInvestment(Double(initialInvestmentTextField.text!)!)
         }

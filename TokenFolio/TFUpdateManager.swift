@@ -36,11 +36,9 @@ class TFUpdateManager {
                 self.deleteMissingTokens()
                 
                 TFCoreDataProvider.shared.save()
-
+                print("Saved")
             }
         }
-        
-        
     }
     
     

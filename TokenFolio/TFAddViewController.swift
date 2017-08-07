@@ -57,7 +57,7 @@ class TFAddViewController: TFTableViewController {
             
             showAlertWithText("Please select token")
             
-        } else if !(quantityTextField.text?.isNumber)!  {
+        } else if !(quantityTextField.text?.isValidNumber)!  {
             
             showAlertWithText("Please enter a valid quantity")
             
@@ -106,6 +106,16 @@ class TFAddViewController: TFTableViewController {
         
     }
     
+    
+    func showAlertWithText(_ text: String) {
+        
+        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
 }
 
 
@@ -125,6 +135,17 @@ extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
         window.addSubview(picker)
         picker.delegate = self
         picker.dataSource = self
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        let token = tokens[row]
+        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 22, weight: UIFontWeightRegular),NSForegroundColorAttributeName:UIColor.black])
+        pickerLabel.attributedText = myTitle
+        pickerLabel.textAlignment = .center
+        pickerLabel.backgroundColor = UIColor.white
+        pickerView.backgroundColor = UIColor.white
+        return pickerLabel
     }
     
     
@@ -201,27 +222,6 @@ extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
         
         view.endEditing(true)
         hidePicker()
-    }
-    
-    
-    func showAlertWithText(_ text: String) {
-        
-        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let pickerLabel = UILabel()
-        let token = tokens[row]
-        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 22, weight: UIFontWeightRegular),NSForegroundColorAttributeName:UIColor.black])
-        pickerLabel.attributedText = myTitle
-        pickerLabel.textAlignment = .center
-        pickerLabel.backgroundColor = UIColor.white
-        pickerView.backgroundColor = UIColor.white
-        return pickerLabel
     }
     
 

@@ -12,9 +12,9 @@ import UIKit
 
 extension String  {
     
-    var isNumber : Bool {
+    var isValidNumber : Bool {
         
-        return Double(self) == nil ? false : true
+        return Double(self) != nil && Double(self) != 0.0 ? true : false
     }
 }
 
