@@ -40,9 +40,7 @@ public class Token: NSManagedObject {
     
 
     
-    class func newTokenFromDictionary(_ dict : [String : Any]) {
-        
-        
+    static func newTokenFromDictionary(_ dict : [String : Any]) {
         
         let token = TFCoreDataProvider.shared.newToken()
         
@@ -50,22 +48,7 @@ public class Token: NSManagedObject {
   
     }
     
-     func setTotalValue() {
-        
-        let quantity = (self.quantity?.doubleValue)!
-        
-        switch TFUserSettings.currentCurrency()! {
-        case .Usd:
-            self.totalValue = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
-        case .Eur:
-            self.totalValue = NSNumber(value: quantity * (self.priceEur?.doubleValue)!)
-        case .Gbp:
-            self.totalValue = NSNumber(value: quantity * (self.priceGbp?.doubleValue)!)
-        default:
-            self.totalValue = NSNumber(value: quantity * (self.priceUsd?.doubleValue)!)
-        }
     
-    }
     
     func assignValuesToTokenFromDictionary(_ dict : [String : Any]) {
         
@@ -87,28 +70,6 @@ public class Token: NSManagedObject {
             self.lastUpdated = NSDate(timeIntervalSince1970:seconds!)
         }
         
-        if let marketCapEur = dict[key.marketCapEur] as? String  {
-            
-            self.marketCapEur = marketCapEur
-            
-        } else {
-            
-            self.marketCapEur = nil
-        }
-        
-        if let marketCapGbp = dict[key.marketCapGbp] as? String  {
-            
-            self.marketCapGbp = marketCapGbp
-            
-        } else {
-            
-            self.marketCapGbp = nil
-        }
-        
-        if let marketCapUsd = dict[key.marketCapUsd] as? String  {
-            
-            self.marketCapUsd = marketCapUsd
-        }
         
         if let name = dict[key.name] as? String  {
             
@@ -118,40 +79,36 @@ public class Token: NSManagedObject {
         if let percentChange1h = dict[key.percentChange1h] as? String  {
             
             self.percentChange1h = percentChange1h
+            
+        } else {
+            
+            self.percentChange1h = "N/A"
         }
         
         if let percentChange24h = dict[key.percentChange24h] as? String  {
             
             self.percentChange24h = percentChange24h
+            
+        } else {
+            
+            self.percentChange24h = "N/A"
         }
+        
+        if let percentChange7d = dict[key.percentChange7d] as? String  {
+            
+            self.percentChange7d = percentChange7d
+            
+        } else {
+            
+            self.percentChange7d = "N/A"
+        }
+        
         
         if let priceBtc = dict[key.priceBtc]  as? String {
             
             self.priceBtc = NSNumber(value: Double(priceBtc)!)
         }
-        
-        if let priceEur = dict[key.priceEur] as? String  {
-            
-            self.priceEur = NSNumber(value: Double(priceEur)!)
-            
-        } else {
-            
-            self.priceEur = nil
-        }
-        
-        if let priceGbp = dict[key.priceGbp] as? String  {
-            
-            self.priceGbp = NSNumber(value: Double(priceGbp)!)
-            
-        } else {
-            
-            self.priceGbp = nil
-        }
-        
-        if let priceUsd = dict[key.priceUsd] as? String {
-            
-            self.priceUsd = NSNumber(value: Double(priceUsd)!)
-        }
+
         
         if let rank = dict[key.rank] as? String  {
             
@@ -169,38 +126,85 @@ public class Token: NSManagedObject {
             self.totalSupply = totalSupply
         }
         
-        if let volume24hEur = dict[key.volume24hEur] as? String  {
-            
-            self.volume24hEur = volume24hEur
-            
-        } else {
-            
-            self.volume24hEur = nil
-        }
-        
-        if let volume24hGbp = dict[key.volume24hGbp] as? String  {
-            
-            self.volume24hGbp = volume24hGbp
-            
-        } else {
-            
-            self.volume24hGbp = nil
-        }
-        
-        if let volume24hUsd = dict[key.volume24hUsd] as? String  {
-            
-            self.volume24hUsd = volume24hUsd
-        }
+        setMarketCapAndPriceFromDict(dict)
         
         if (quantity?.intValue)! > 0 {
             
-            self.setTotalValue()
+            self.totalValue = NSNumber(value: (self.quantity?.doubleValue)! * (self.price?.doubleValue)!)
             
         }
 
     }
     
+    func setMarketCapAndPriceFromDict(_ dict: [String : Any]) {
+        
+        let key = keys()
+        
+        if TFUserSettings.currentCurrency() == Currency.Usd {
+            
+            if let marketCapUsd = dict[key.marketCapUsd] as? String  {
+                
+                self.marketCap = marketCapUsd
+            }
+            
+            if let priceUsd = dict[key.priceUsd] as? String {
+                
+                self.price = NSNumber(value: Double(priceUsd)!)
+            }
+            
+            if let volume24hUsd = dict[key.volume24hUsd] as? String  {
+                
+                self.volume24h = volume24hUsd
+            }
+
+        } else if TFUserSettings.currentCurrency() == Currency.Eur {
+            
+            if let marketCapEur = dict[key.marketCapEur] as? String  {
+                
+                self.marketCap = marketCapEur
+                
+            }
+            
+            if let priceEur = dict[key.priceEur] as? String  {
+                
+                self.price = NSNumber(value: Double(priceEur)!)
+                
+            }
+            
+            if let volume24hEur = dict[key.volume24hEur] as? String  {
+                
+                self.volume24h = volume24hEur
+                
+            }
+
+        } else  if TFUserSettings.currentCurrency() == Currency.Gbp {
+            
+            if let marketCapGbp = dict[key.marketCapGbp] as? String  {
+                
+                self.marketCap = marketCapGbp
+            }
+            
+            if let priceGbp = dict[key.priceGbp] as? String  {
+                
+                self.price = NSNumber(value: Double(priceGbp)!)
+                
+            }
+            
+            if let volume24hGbp = dict[key.volume24hGbp] as? String  {
+                
+                self.volume24h = volume24hGbp
+                
+            }
+        }
+    }
     
+    
+    func remove() {
+        
+        self.quantity = NSNumber(integerLiteral: 0)
+        self.isSelected = false
+ 
+    }
 
 
     public func delete() {

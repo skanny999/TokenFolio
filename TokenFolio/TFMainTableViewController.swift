@@ -103,7 +103,7 @@ class TFMainTableViewController: UITableViewController {
                 
                 for token in tokens {
                     
-                    totalValue += Value.tokenTotalValue(token)
+                    totalValue += token.totalValue!.doubleValue
                 }
             }
             
@@ -146,9 +146,8 @@ class TFMainTableViewController: UITableViewController {
         if editingStyle == .delete {
 
             let token = self.fetchedResultsController.object(at: indexPath)
-            token.quantity = NSNumber(integerLiteral: 0)
-            token.isSelected = false
-
+            token.remove()
+            
         }
     }
     
@@ -165,6 +164,15 @@ class TFMainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 90.0
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let token = fetchedResultsController.object(at: indexPath);
+        
+        performSegue(withIdentifier: "DETAILS_SEGUE", sender: token)
+ 
     }
     
 
@@ -184,7 +192,7 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
         case .delete:
             tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
         case .update:
-            break
+            tableView.reloadData()
         case .move:
             tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
             tableView.insertRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
@@ -196,7 +204,6 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
         
-        tableView.reloadData()
         refreshController?.endRefreshing()
         updatePortfolioLabel()
     }
@@ -204,9 +211,11 @@ extension TFMainTableViewController : NSFetchedResultsControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ADD_SEGUE" {
+        if segue.identifier == "DETAILS_SEGUE" {
             
+            let detailViewController = segue.destination as! TFDetailViewController
             
+            detailViewController.token = sender as? Token
         }
         
     }

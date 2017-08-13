@@ -47,7 +47,7 @@ class TFAddViewController: TFTableViewController {
         
         selectTokenLabel.updateWithText(token.name!)
         quantityTextField.text = token.quantity?.stringValue
-        currentPriceLabel.updateWithText(Value.formattedTokenPrice(token))
+        currentPriceLabel.updateWithText(Value.formattedValue((token.price?.doubleValue)!))
     }
     
     
@@ -65,7 +65,7 @@ class TFAddViewController: TFTableViewController {
             
             token!.isSelected = true
             token!.quantity =  NSNumber(value:Double(quantityTextField.text!)!)
-            token!.setTotalValue()
+            token!.totalValue = NSNumber(value: (token?.quantity?.doubleValue)! * (token?.price?.doubleValue)!)
             
             print(token!)
             

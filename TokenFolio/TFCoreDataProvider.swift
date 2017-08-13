@@ -116,9 +116,8 @@ class TFCoreDataProvider {
         
         let request = NSFetchRequest<Token>(entityName: "Token")
         let predicate = NSPredicate(format: "isSelected == 1");
-        let sortDescriptor = NSSortDescriptor(key: "totalValueBtc", ascending: true)
         request.predicate = predicate
-        request.sortDescriptors = [sortDescriptor]
+        request.sortDescriptors = [NSSortDescriptor(key: "totalValue", ascending: false)]
         
         return request
         

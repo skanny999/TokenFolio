@@ -17,6 +17,7 @@ class TFSettingsViewController: TFTableViewController {
     @IBOutlet weak var initialInvestmentTextField: UITextField!
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         configureSegmentedControllers()
@@ -29,8 +30,11 @@ class TFSettingsViewController: TFTableViewController {
         
         let font = UIFont.systemFont(ofSize: 23, weight: UIFontWeightMedium)
         currencyController.setTitleTextAttributes([NSFontAttributeName: font], for: [])
-        
         changeController.setTitleTextAttributes([NSFontAttributeName: font], for: [])
+        
+        currencyController.selectedSegmentIndex = Value.currencyIndex()
+        
+        
     }
 
     @IBAction func setButtonTapped(_ sender: Any) {

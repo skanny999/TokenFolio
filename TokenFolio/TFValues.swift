@@ -41,24 +41,24 @@ struct Value {
         
     
     
-    static func formattedTokenPrice(_ token:Token) -> String {
-    
-        let price : Double
-        
-        switch TFUserSettings.currentCurrency()! {
-        case .Usd:
-            price = token.priceUsd!.doubleValue
-        case .Eur:
-            price = token.priceEur!.doubleValue
-        case .Gbp:
-            price = token.priceGbp!.doubleValue
-        default:
-            price = token.priceUsd!.doubleValue
-        }
-
-        return formattedValue(price)
-
-    }
+//    static func formattedTokenPrice(_ token:Token) -> String {
+//    
+//        let price : Double
+//        
+//        switch TFUserSettings.currentCurrency()! {
+//        case .Usd:
+//            price = token.priceUsd!.doubleValue
+//        case .Eur:
+//            price = token.priceEur!.doubleValue
+//        case .Gbp:
+//            price = token.priceGbp!.doubleValue
+//        default:
+//            price = token.priceUsd!.doubleValue
+//        }
+//
+//        return formattedValue(price)
+//
+//    }
 
     
     static func formattedTokenValue(_ token : Token) -> String {
@@ -69,24 +69,24 @@ struct Value {
         
     }
     
-    static func tokenTotalValue(_ token : Token) -> Double {
-        
-//        let value : Double
+//    static func tokenTotalValue(_ token : Token) -> Double {
 //        
-//        switch TFUserSettings.currentCurrency()! {
-//        case .Usd:
-//            value = token.totalValueUsd!.doubleValue
-//        case .Eur:
-//            value = token.totalValueEur!.doubleValue
-//        case .Gbp:
-//            value = token.totalValueGbp!.doubleValue
-//        default:
-//            value = token.totalValueUsd!.doubleValue
-//        }
-        
-        return token.totalValue!.doubleValue
-        
-    }
+////        let value : Double
+////        
+////        switch TFUserSettings.currentCurrency()! {
+////        case .Usd:
+////            value = token.totalValueUsd!.doubleValue
+////        case .Eur:
+////            value = token.totalValueEur!.doubleValue
+////        case .Gbp:
+////            value = token.totalValueGbp!.doubleValue
+////        default:
+////            value = token.totalValueUsd!.doubleValue
+////        }
+//        
+//        return token.totalValue!.doubleValue
+//        
+//    }
     
     
     
@@ -95,6 +95,23 @@ struct Value {
         let formattedNumber = String(format: "%.2f", locale: Locale.current, value)
         
         return String(format: "%@ %@", TFUserSettings.currentCurrency()!.rawValue, formattedNumber)
+        
+    }
+    
+    static func currencyIndex() -> Int {
+        
+        switch TFUserSettings.currentCurrency()! {
+        case .Usd:
+            return 0
+        case .Eur:
+            return 1
+        case .Gbp:
+            return 2
+        default:
+            return 0
+        }
+        
+        
         
     }
     
