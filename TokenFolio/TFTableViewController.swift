@@ -14,6 +14,7 @@ class TFTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.backgroundView = UIImageView(image: UIImage(named: "Backgound.png"))
+        navigationItem.backBarButtonItem?.title = ""
         
     }
     

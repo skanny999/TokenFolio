@@ -15,19 +15,15 @@ class TFCoreDataProvider {
     var managedObjectContext : NSManagedObjectContext
     var backgroundManagedObjectContext : NSManagedObjectContext
     
-    static let shared: TFCoreDataProvider = {
-        let instance = TFCoreDataProvider()
+    static let shared = TFCoreDataProvider()
         
-        return instance
-    }()
-    
-    init() {
+    private init(){
         
         managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         backgroundManagedObjectContext.parent = managedObjectContext
-        
     }
+
     
     func newToken() -> Token {
         

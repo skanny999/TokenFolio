@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bN0-Nk-7SP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bN0-Nk-7SP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -488,19 +488,19 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-LQ-U9f">
-                                                    <rect key="frame" x="16" y="15" width="343" height="70"/>
+                                                    <rect key="frame" x="16" y="15.5" width="343" height="70"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8f-nA-7rd">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3X-bq-LUS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="212" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="280.5" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 2.156789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oo-gx-WGe">
-                                                                    <rect key="frame" x="212" y="0.0" width="131" height="30"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIT-PH-YzJ">
+                                                                    <rect key="frame" x="280.5" y="0.0" width="62.5" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -733,6 +733,16 @@
                             <outlet property="delegate" destination="SCT-iI-uH8" id="isj-bP-JnT"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="change1hLabel" destination="ef5-Gj-9PB" id="Zs1-sk-zlQ"/>
+                        <outlet property="change24HrLabel" destination="tiq-SL-GkA" id="ymP-ha-K77"/>
+                        <outlet property="change7dLabel" destination="YA3-vM-0sx" id="G4W-cP-fQY"/>
+                        <outlet property="marketCapLabel" destination="z9r-pf-UwY" id="4Ff-ji-YDt"/>
+                        <outlet property="priceLabel" destination="BIT-PH-YzJ" id="6qM-aU-dV7"/>
+                        <outlet property="quantityTextView" destination="Vwb-BL-BfA" id="IhC-OH-a6q"/>
+                        <outlet property="supplyLabel" destination="Ght-nj-jJa" id="LQr-mY-AqN"/>
+                        <outlet property="volume24HrLabel" destination="Udg-4c-cdO" id="OGj-yY-djx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VC-fv-ZZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

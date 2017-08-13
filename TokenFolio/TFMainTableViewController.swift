@@ -107,7 +107,7 @@ class TFMainTableViewController: UITableViewController {
                 }
             }
             
-            self.portfolioValueLabel.text = Value.formattedValue(totalValue)
+            self.portfolioValueLabel.text = Value.formattedValue2Dec(totalValue)
         }
     }
 

@@ -47,7 +47,7 @@ class TFAddViewController: TFTableViewController {
         
         selectTokenLabel.updateWithText(token.name!)
         quantityTextField.text = token.quantity?.stringValue
-        currentPriceLabel.updateWithText(Value.formattedValue((token.price?.doubleValue)!))
+        currentPriceLabel.updateWithText(Value.formattedValue2Dec((token.price?.doubleValue)!))
     }
     
     
