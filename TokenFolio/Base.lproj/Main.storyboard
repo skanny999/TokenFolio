@@ -303,11 +303,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgd-z6-KfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="1793" y="1205"/>
-=======
-            <point key="canvasLocation" x="3279" y="1693"/>
->>>>>>> Stashed changes
+<!--<<<<<<< Updated upstream-->
+<!--            <point key="canvasLocation" x="1793" y="1205"/>-->
+<!--=======-->
+<!--            <point key="canvasLocation" x="3279" y="1693"/>-->
+<!-->>>>>>> Stashed changes-->
         </scene>
         <!--Add Token-->
         <scene sceneID="b67-sg-ZmH">
@@ -957,11 +957,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja8-kT-Upm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="514" y="1164"/>
-=======
-            <point key="canvasLocation" x="2332" y="1693"/>
->>>>>>> Stashed changes
+<!--<<<<<<< Updated upstream-->
+<!--            <point key="canvasLocation" x="514" y="1164"/>-->
+<!--=======-->
+<!--            <point key="canvasLocation" x="2332" y="1693"/>-->
+<!-->>>>>>> Stashed changes-->
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0zQ-he-BcY">
@@ -979,9 +979,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-bj-Tp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="2818" y="1205"/>
-=======
+<!--<<<<<<< Updated upstream-->
+<!--            <point key="canvasLocation" x="2818" y="1205"/>-->
+<!--=======-->
             <point key="canvasLocation" x="2332" y="912"/>
         </scene>
         <!--Navigation Controller-->
@@ -1001,7 +1001,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8e-Lt-Hur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="230" y="912"/>
->>>>>>> Stashed changes
+<!-->>>>>>> Stashed changes-->
         </scene>
     </scenes>
 </document>
