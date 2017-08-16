@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import DZNEmptyDataSet
+//import DZNEmptyDataSet
 
 class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
 
@@ -27,7 +27,7 @@ class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         configureFetchedResultsController()
         updatePortfolioLabel()
         configureRefreshController()
-        configureEmptyDataSet()
+//        configureEmptyDataSet()
         tableView.backgroundView = UIImageView(image: UIImage(named: "Backgound.png"))
         tableView.delegate = self
         tableView.dataSource = self
@@ -222,44 +222,44 @@ extension TFMainViewController : NSFetchedResultsControllerDelegate {
     }
 }
 
-extension TFMainViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+//extension TFMainViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+//    
+//    func configureEmptyDataSet() {
+//        
+//        tableView.emptyDataSetSource = self
+//        tableView.emptyDataSetDelegate = self
+//        tableView.tableFooterView = UIView()
+//        
+//    }
+//    
+//    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+//        let str = "Welcome to TokenFolio"
+//        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//    
+//    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+//        let str = "Tap the Plus button to add your first Token!"
+//        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//    
+//    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+//        return UIImage(named: "taylor-swift")
+//    }
+//    
+//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+//        let str = "+"
+//        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 60, weight: UIFontWeightLight)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//    
+//    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+//        
+//        performSegue(withIdentifier: "ADD_SEGUE", sender: nil)
+//        
+//    }
+
     
-    func configureEmptyDataSet() {
-        
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
-        tableView.tableFooterView = UIView()
-        
-    }
     
-    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "Welcome to TokenFolio"
-        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "Tap the Plus button to add your first Token!"
-        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-        return UIImage(named: "taylor-swift")
-    }
-    
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
-        let str = "+"
-        let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 60, weight: UIFontWeightLight)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-        
-        performSegue(withIdentifier: "ADD_SEGUE", sender: nil)
-        
-    }
-    
-    
-    
-}
+//}

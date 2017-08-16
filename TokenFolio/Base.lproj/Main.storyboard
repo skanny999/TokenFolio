@@ -303,11 +303,6 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgd-z6-KfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<!--<<<<<<< Updated upstream-->
-<!--            <point key="canvasLocation" x="1793" y="1205"/>-->
-<!--=======-->
-<!--            <point key="canvasLocation" x="3279" y="1693"/>-->
-<!-->>>>>>> Stashed changes-->
         </scene>
         <!--Add Token-->
         <scene sceneID="b67-sg-ZmH">
@@ -772,9 +767,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQQ-hg-QUi">
                                 <rect key="frame" x="0.0" y="64" width="375" height="96"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-b8-H8h">
-                                        <rect key="frame" x="8" y="31" width="359" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-b8-H8h">
+                                        <rect key="frame" x="8" y="26" width="359" height="44.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="37"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -783,6 +777,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="4Pb-y4-9PQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="eUJ-b8-H8h" secondAttribute="trailing" constant="8" id="jWl-mJ-gGe"/>
+                                    <constraint firstItem="eUJ-b8-H8h" firstAttribute="leading" secondItem="gQQ-hg-QUi" secondAttribute="leading" constant="8" id="jyg-Kq-ejT"/>
+                                    <constraint firstItem="eUJ-b8-H8h" firstAttribute="centerY" secondItem="gQQ-hg-QUi" secondAttribute="centerY" id="ljw-hC-agm"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hex-uA-Z9g">
@@ -957,11 +954,6 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja8-kT-Upm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<!--<<<<<<< Updated upstream-->
-<!--            <point key="canvasLocation" x="514" y="1164"/>-->
-<!--=======-->
-<!--            <point key="canvasLocation" x="2332" y="1693"/>-->
-<!-->>>>>>> Stashed changes-->
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0zQ-he-BcY">
@@ -979,9 +971,6 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBR-bj-Tp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<!--<<<<<<< Updated upstream-->
-<!--            <point key="canvasLocation" x="2818" y="1205"/>-->
-<!--=======-->
             <point key="canvasLocation" x="2332" y="912"/>
         </scene>
         <!--Navigation Controller-->
@@ -1000,8 +989,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8e-Lt-Hur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="912"/>
-<!-->>>>>>> Stashed changes-->
+            <point key="canvasLocation" x="73" y="1151"/>
         </scene>
     </scenes>
 </document>

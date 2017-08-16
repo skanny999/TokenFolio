@@ -6,5 +6,7 @@ target 'TokenFolio' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'DZNEmptyDataSet'
+    pod 'Fabric'
+    pod 'Crashlytics'
     
 end
