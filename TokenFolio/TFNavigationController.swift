@@ -42,7 +42,7 @@ class TFNavigationController: UINavigationController {
         let customFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], for: .normal)
         
-        navigationBar.topItem?.title = " "
+//        navigationBar.topItem?.title = " "
         
     }
     
