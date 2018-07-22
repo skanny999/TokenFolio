@@ -39,10 +39,7 @@ extension UILabel {
         self.fadeOut()
         self.text = text
         self.fadeIn()
-    }
-    
-    
-    
+    } 
 }
 
 
