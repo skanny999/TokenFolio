@@ -11,50 +11,43 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>DZNEmptyDataSet.xcscheme</key>
+		<key>Crashlytics.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-TokenFolio.xcscheme</key>
+		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>Fabric.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Pods-TokenFolio.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>1E402E3C1803EF87AC8B9559DCB12AAD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>82B77AEA89514CF05EE444EB9EB1F7A5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

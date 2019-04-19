@@ -29,7 +29,7 @@ class TFNavigationController: UINavigationController {
     
     func setTitleTextAttributes() {
         
-        let titleAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)]
+        let titleAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.medium)]
         navigationBar.titleTextAttributes = titleAttributes
         navigationBar.tintColor = UIColor.black
         
@@ -39,8 +39,8 @@ class TFNavigationController: UINavigationController {
 
     func setButtonTextAttributes() {
         
-        let customFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], for: .normal)
+        let customFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: customFont], for: .normal)
         
 //        navigationBar.topItem?.title = " "
         

@@ -109,8 +109,8 @@ class TFAddViewController: TFTableViewController {
     
     func showAlertWithText(_ text: String) {
         
-        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
         
@@ -140,7 +140,7 @@ extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         let token = tokens[row]
-        let myTitle = NSAttributedString(string: token.name!, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 22, weight: UIFontWeightRegular),NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: token.name!, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.regular),NSAttributedString.Key.foregroundColor:UIColor.black])
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .center
         pickerLabel.backgroundColor = UIColor.white
@@ -194,7 +194,7 @@ extension TFAddViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
             
             let indexPath = NSIndexPath(row: 0, section: 1)
             
-            self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.middle, animated: true)
+            self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.middle, animated: true)
             
             let window = UIApplication.shared.keyWindow!
             self.picker.frame = CGRect(x: 0,

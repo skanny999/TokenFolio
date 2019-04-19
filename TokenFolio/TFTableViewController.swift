@@ -21,7 +21,7 @@ class TFTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+        header.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
         header.textLabel?.textColor = UIColor.black
     }
     

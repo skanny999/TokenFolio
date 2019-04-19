@@ -28,9 +28,9 @@ class TFSettingsViewController: TFTableViewController {
 
     func configureSegmentedControllers() {
         
-        let font = UIFont.systemFont(ofSize: 23, weight: UIFontWeightMedium)
-        currencyController.setTitleTextAttributes([NSFontAttributeName: font], for: [])
-        changeController.setTitleTextAttributes([NSFontAttributeName: font], for: [])
+        let font = UIFont.systemFont(ofSize: 23, weight: UIFont.Weight.medium)
+        currencyController.setTitleTextAttributes([NSAttributedString.Key.font: font], for: [])
+        changeController.setTitleTextAttributes([NSAttributedString.Key.font: font], for: [])
         
         currencyController.selectedSegmentIndex = Value.currencyIndex()
         
@@ -52,7 +52,7 @@ class TFSettingsViewController: TFTableViewController {
     func configureTitle() {
             
             let titleAttributes = [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.medium)
             ]
             navigationController?.navigationBar.titleTextAttributes = titleAttributes
         

@@ -37,7 +37,7 @@ class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     func configureTitle() {
         
         let titleAttributes = [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium)
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.medium)
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
@@ -49,7 +49,7 @@ class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         
         refreshController = UIRefreshControl()
         refreshController.attributedTitle = NSAttributedString(string: "Refreshing...")
-        refreshController.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refreshController.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         tableView.refreshControl = refreshController
         
     }
@@ -66,7 +66,7 @@ class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         
     }
     
-    func refresh() {
+    @objc func refresh() {
         
         TFUpdateManager.updateTokens()
         
@@ -145,7 +145,7 @@ class TFMainViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
             let token = self.fetchedResultsController.object(at: indexPath)
@@ -190,14 +190,16 @@ extension TFMainViewController : NSFetchedResultsControllerDelegate {
         
         switch type {
         case .insert:
-            tableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+            tableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableView.RowAnimation.automatic)
         case .delete:
-            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableView.RowAnimation.automatic)
         case .update:
             tableView.reloadData()
         case .move:
-            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
-            tableView.insertRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+            tableView.deleteRows(at: [indexPath! as IndexPath], with: UITableView.RowAnimation.automatic)
+            tableView.insertRows(at: [indexPath! as IndexPath], with: UITableView.RowAnimation.automatic)
+        @unknown default:
+            fatalError()
         }
         
     }
